@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  get '/hello', to: 'application#hello_world'
+
 
   post '/signup', to: 'users#create'
   get '/me',      to: 'users#me'
   post '/login',    to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+
+  resources :users, only: [:create, :show, :index, :destory, :update]
 
   get '*path',
     to: 'fallback#index',

@@ -16,12 +16,6 @@ function App() {
     else { setUser(null) }
   });}, []);
 
-  useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
-  }, []);
-
   if (!user) {
     return <Routes>
       {/* route user to login if url is login */}
@@ -33,7 +27,7 @@ function App() {
 
   return (
     <div className="App"><Routes>
-      <Route path='/' element={<Home />}/>
+      <Route path='/' element={<Home user={user} setUser={setUser}/>}/>
       <Route path='/testing' element={<h1>Testing</h1>}/>
     </Routes></div>
   ) 

@@ -25,8 +25,4 @@ class ApplicationController < ActionController::API
     render json: { error: "#{exception.model} not found" }, status: :not_found
   end
 
-  def hello_world
-    session[:count] = (session[:count] || 0) + 1
-    render json: { count: session[:count] }
-  end
 end

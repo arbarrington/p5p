@@ -9,7 +9,7 @@ export function LoginSignup({ user, setUser, isLogin }) {
   const [password, setPassword]   = useState("")
   const [errorText, setErrorText] = useState("")
   const [icon, setIcon] = useState(null)
-  const [banner, setBanner] = useState(null)
+
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -28,6 +28,7 @@ export function LoginSignup({ user, setUser, isLogin }) {
       body: formData
     }).then(r=>{ if (r.ok) { r.json().then(user=>{
       setUser(user) // save user details
+      // TODO if signup, nav to iama, else navigate to home, if i am a is null always return to loginsignup
       navigate("/") // send user back to home
     })} else {
       r.json().then(({errors})=>{
@@ -38,7 +39,7 @@ export function LoginSignup({ user, setUser, isLogin }) {
 
   let errorNode = errorText.length===0? null: (<span className="centered" style={{color:"red", textAlign:"center"}}>{errorText}</span>)
 
-  // TODO: profile picture upload
+ 
   return (
     <div className="col">
       <form onSubmit={handleSubmit} className="login centered col" id="log-form">
