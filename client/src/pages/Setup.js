@@ -1,4 +1,10 @@
+import { LabeledInput } from "../components/LabeledInput"
+import { useEffect, useState } from "react"
+
 export function Setup ({user}) {
+  const [profileInfo, setProfileInfo] = useState({user})
+  const handleEdit = ({target:{name, value}})=>setProfileInfo(profileInfo=>({...profileInfo, [name]: value}))
+
   // function handleSubmit(event) {
   //   event.preventDefault()
 
@@ -25,7 +31,15 @@ export function Setup ({user}) {
   //   }})
   // }
   console.log(user.producer)
-  return (
-    <h1>Welcome to the setup page {user.username}</h1>
+
+
+  return (<>
+    <h1>Just a few more things before we can begin, {user.username}!</h1>
+    <LabeledInput value={profileInfo.display_name} name="display_name" label="Name" onChange={(e)=>handleEdit(e)}/>
+    <LabeledInput value={profileInfo.bio} name="bio" label="Bio" onChange={(e)=>handleEdit(e)}/>
+    {user.producer ?
+    <h1>hi farmer</h1>:
+    null}
+    </>
   )
 }
