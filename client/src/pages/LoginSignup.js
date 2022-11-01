@@ -53,6 +53,14 @@ export function LoginSignup({ user, setUser, isLogin }) {
             <div className="spacer"/>
             <input id="icon-input" type="file" accept="image/*" onChange={e=>setIcon(e.target.files[0])}/>
           </div>
+          <div className="row">
+              <label htmlFor="usertype-input">Are you a producer or consumer?</label>
+              <select id="usertype" onChange={(e)=>console.log(`I'm a ${e.target.value}`)}>
+                <option>Choose one...</option>
+                <option value="Producer">Producer</option>
+                <option value="Consumer">Consumer</option>
+              </select>
+          </div>
         </div>}
         {<span className="errorText">{errorText}</span>}
 

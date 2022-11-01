@@ -7,7 +7,7 @@ export function Navbar ({user, logOut}) {
   const [LogoutPopup, setLogoutPopup] = useState(false)
   
   return (
-    <header className="header col" onClick={()=>setPath(window.location.href.split('/').slice(3)[0])}>
+    <header className="navbar col" onClick={()=>setPath(window.location.href.split('/').slice(3)[0])}>
     <Link to="/"><button aria-label="home" >Home</button></Link>
     <Link to="/search"><button aria-label="search">Search</button></Link>
     {/* <button aria-label="notifications"></button> */}
