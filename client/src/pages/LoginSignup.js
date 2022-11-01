@@ -17,6 +17,7 @@ export function LoginSignup({ user, setUser, isLogin }) {
 
     if (username.length===0) { setErrorText("Username must be filled"); return; }
     else if (password.length<6) { setErrorText("Password must be at least 6 characters in length"); return; }
+    else if (!producer) {setErrorText("You must select whether you are a producer or consumer"); return;}
     else { setErrorText("") }
 
     const formData = new FormData()
@@ -65,7 +66,7 @@ export function LoginSignup({ user, setUser, isLogin }) {
               </select>
           </div>
         </div>}
-        {<span className="errorText">{errorText}</span>}
+        {/* {<span className="errorText">{errorText}</span>} */}
 
         <div className="row centerChildren">
           <button className="centered" type="submit">Submit</button>

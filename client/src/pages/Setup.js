@@ -24,7 +24,7 @@ export function Setup ({user}) {
   //     })
   //   }})
   // }
-
+  console.log(user.producer)
   return (
     <h1>Welcome to the setup page {user.username}</h1>
   )

@@ -7,9 +7,8 @@ import { Navbar } from './components/Navbar';
 import { Setup } from './pages/Setup';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
+  
   useEffect(() => { localStorage.setItem("user", JSON.stringify(user));
   }, [user]);
   // auto-login (incase cookie expired or something
