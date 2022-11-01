@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: p5p_production
-  username: p5p
-  password: <%= ENV["P5P_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
