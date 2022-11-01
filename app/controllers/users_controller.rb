@@ -18,6 +18,10 @@ class UsersController < ApplicationController
     render json: user, status: :accepted
   end
 
+  def me
+    render json: @current_user, status: :ok
+  end
+
   def destroy
   end
 

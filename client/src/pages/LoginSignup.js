@@ -9,6 +9,7 @@ export function LoginSignup({ user, setUser, isLogin }) {
   const [password, setPassword]   = useState("")
   const [errorText, setErrorText] = useState("")
   const [icon, setIcon] = useState(null)
+  const [producer, setProducer] = useState(false)
 
 
   function handleSubmit(event) {
@@ -21,7 +22,9 @@ export function LoginSignup({ user, setUser, isLogin }) {
     const formData = new FormData()
     formData.append('username', username)
     formData.append('password', password)
+    formData.append('producer', producer)
     if (icon)   formData.append('icon', icon, icon.name)
+    
 
     fetch(isLogin?"/login":"/signup", {
       method: "POST",
@@ -29,7 +32,7 @@ export function LoginSignup({ user, setUser, isLogin }) {
     }).then(r=>{ if (r.ok) { r.json().then(user=>{
       setUser(user) // save user details
       // TODO if signup, nav to iama, else navigate to home, if i am a is null always return to loginsignup
-      navigate("/") // send user back to home
+      isLogin ? navigate("/") : navigate("/setup") // send user to setup if they just signed up
     })} else {
       r.json().then(({errors})=>{
         setErrorText(errors)
@@ -55,10 +58,10 @@ export function LoginSignup({ user, setUser, isLogin }) {
           </div>
           <div className="row">
               <label htmlFor="usertype-input">Are you a producer or consumer?</label>
-              <select id="usertype" onChange={(e)=>console.log(`I'm a ${e.target.value}`)}>
+              <select id="usertype" onChange={(e)=>setProducer(e.target.value)}>
                 <option>Choose one...</option>
-                <option value="Producer">Producer</option>
-                <option value="Consumer">Consumer</option>
+                <option value={true}>Producer</option>
+                <option value={false}>Consumer</option>
               </select>
           </div>
         </div>}
