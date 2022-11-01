@@ -32,12 +32,12 @@ export function LoginSignup({ user, setUser, isLogin }) {
       navigate("/") // send user back to home
     })} else {
       r.json().then(({errors})=>{
-        setErrorText(errors[0])
+        setErrorText(errors)
       })
     }})
   }
 
-  let errorNode = errorText.length===0? null: (<span className="centered" style={{color:"red", textAlign:"center"}}>{errorText}</span>)
+  let errorNode = errorText.length===0 ? null : (<span className="centered" style={{color:"red", textAlign:"center"}}>{errorText}</span>)
 
  
   return (

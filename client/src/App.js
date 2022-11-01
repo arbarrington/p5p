@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Route, Routes } from 'react-router-dom';
 import { LoginSignup } from './pages/LoginSignup';
 import { Home } from './pages/Home';
+import { Navbar } from './components/Navbar';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -26,10 +27,13 @@ function App() {
   }
 
   return (
+    <>
+    <Navbar user={user} logout={()=>setUser(null)}/>
     <div className="App"><Routes>
       <Route path='/' element={<Home user={user} setUser={setUser}/>}/>
       <Route path='/testing' element={<h1>Testing</h1>}/>
     </Routes></div>
+    </>
   ) 
 }
 
