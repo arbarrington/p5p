@@ -1,4 +1,6 @@
 import {useState} from "react";
+import {ProductCard} from "../components/ProductCard"
+
 export function Search () {
   const [searchTerm, setSearchTerm] = useState("")
 

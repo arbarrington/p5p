@@ -5,6 +5,31 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+puts "Seeding Users"
+users = [
+  {
+    username: "farmerbob",
+    display_name: "Bob",
+    bio: "Growing the good stuff since 1984. I own four farms: Merrihew, Darby, Harris, and Ball",
+    producer: true,
+    password: "123456"
+  },
+  {
+    username: "farmerjohn",
+    display_name: "John",
+    bio: "I grow food at Barrington Farms",
+    producer: true,
+    password: "123456"
+  },
+  {
+    username: "consumerjoe",
+    display_name: "Joe",
+    bio: "I eat healthy, fresh, local food",
+    producer: false,
+    password: "123456"
+  }
+]
+
 puts "Seeding Farms"
 farms = [
   {
@@ -49,34 +74,12 @@ farms = [
   }
 ]
 
-users = [
-  {
-    username: "farmerbob",
 
-    display_name: "Bob",
-    bio: "Growing the good stuff since 1984. I own four farms: Merrihew, Darby, Harris, and Ball",
-    producer: true
-  },
-  {
-    username: "farmerjohn",
-
-    display_name: "John",
-    bio: "I grow food at Barrington Farms",
-    producer: true
-  },
-  {
-    username: "consumerjoe",
-
-    display_name: "Joe",
-    bio: "I eat healthy, fresh, local food",
-    producer: false
-  }
-]
-
-Farm.destroy_all
-Farm.create(farms)
+User.create!(users)
+# Farm.destroy_all
+Farm.create!(farms)
 # User.destroy_all
-User.create(users)
+
 
 puts "Done!"
 
