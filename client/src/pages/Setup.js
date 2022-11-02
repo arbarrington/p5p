@@ -1,7 +1,8 @@
 import { LabeledInput } from "../components/LabeledInput"
 import { useEffect, useState } from "react"
+import { Navigate } from "react-router-dom"
 
-export function Setup ({user, fetchUserData}) {
+export function Setup ({user, fetchUserData, navigate}) {
   const [profileInfo, setProfileInfo] = useState({user})
   const [farmInfo, setFarmInfo] = useState({})
   const [icon, setIcon] = useState(null)
@@ -9,23 +10,37 @@ export function Setup ({user, fetchUserData}) {
   const handleEdit = ({target:{name, value}})=>setProfileInfo(profileInfo=>({...profileInfo, [name]: value}))
 
   function patchProfile (e) {
-    e.preventDefault()
-
+    // e.preventDefault()
     const formData = new FormData()
     // copy the normal stuff into form data
     for (const key in profileInfo) { formData.append(key, profileInfo[key]) }
     // put the images in
     if (icon)   formData.append('icon', icon, icon.name)
-    if (banner) formData.append('banner', banner, banner.name)
+    console.log("patch profile triggered", user)
 
     fetch(`/user/${user.username}`, {
       method: "PATCH",
       body: formData
       }).then(r=>{if (r.ok) {
+        navigate('/')
+        
+      }})
+  }
+
+  function postFarm (e) {
+    e.preventDefault()
+    const formData = new FormData()
+    // copy the normal stuff into form data
+    for (const key in farmInfo) { formData.append(key, farmInfo[key]) }
+    if (banner) formData.append('banner', banner, banner.name)
+
+    fetch(`/user/${user.username}`, {
+      method: "POST",
+      body: formData
+      }).then(r=>{if (r.ok) {
         fetchUserData()
       }})
   }
-  console.log(user.producer)
 
 
   return (<>

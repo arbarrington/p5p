@@ -5,9 +5,11 @@ import { LoginSignup } from './pages/LoginSignup';
 import { Home } from './pages/Home';
 import { Navbar } from './components/Navbar';
 import { Setup } from './pages/Setup';
+import {useNavigate} from 'react-router-dom';
 
 function App() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
+  const navigate = useNavigate()
 
   useEffect(() => { localStorage.setItem("user", JSON.stringify(user));
   }, [user]);
@@ -18,7 +20,12 @@ function App() {
   });}, []);
 
   // TODO fix patch route
-  const fetchUserData = () => console.log('Fix your patch request bro')
+  const fetchUserData = () => {console.log("fix me in app.js")}
+  
+  // ()=> fetch(`/user/${user.username}`)
+  //   .then(r=>r.json()).then(data=>{ setUser(data) })
+  // // eslint-disable-next-line
+  // useEffect(() => { fetchUserData() }, [username])
   
 
   if (!user) {
@@ -35,7 +42,7 @@ function App() {
     <Navbar user={user} logout={()=>setUser(null)}/>
     <div className="App"><Routes>
       <Route path='/' element={<Home user={user} setUser={setUser}/>}/>
-      <Route path='/setup' element={<Setup user={user}/>}/>
+      <Route path='/setup' element={<Setup user={user} navigate={navigate}/>}/>
     </Routes></div>
     </>
   ) 

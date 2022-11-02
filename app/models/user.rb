@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 16 }
-  validates :producer, presence: true
+  validates :producer, inclusion: {in: [true, false]}
   
   has_one_attached :icon
   has_many :farms

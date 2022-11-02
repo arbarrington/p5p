@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 
-export function Navbar ({user, logOut}) {
+export function Navbar ({user, logOut=()=>{}}) {
   const [path, setPath] = useState("")
   const [LogoutPopup, setLogoutPopup] = useState(false)
   
