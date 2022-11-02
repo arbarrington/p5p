@@ -26,6 +26,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    user = User.find_by(username: params[:username])
+    render json: user, status: :ok
   end
 
   private

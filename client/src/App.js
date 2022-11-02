@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import { Route, Routes } from 'react-router-dom';
 import { LoginSignup } from './pages/LoginSignup';
 import { Home } from './pages/Home';
+import { Search } from './pages/Search';
+import { Profile } from './pages/Profile';
+import { MyFarm } from './pages/MyFarm';
 import { Navbar } from './components/Navbar';
 import { Setup } from './pages/Setup';
 import {useNavigate} from 'react-router-dom';
@@ -24,9 +27,7 @@ function App() {
   
   // ()=> fetch(`/user/${user.username}`)
   //   .then(r=>r.json()).then(data=>{ setUser(data) })
-  // // eslint-disable-next-line
   // useEffect(() => { fetchUserData() }, [username])
-  
 
   if (!user) {
     return <Routes>
@@ -43,6 +44,9 @@ function App() {
     <div className="App"><Routes>
       <Route path='/' element={<Home user={user} setUser={setUser}/>}/>
       <Route path='/setup' element={<Setup user={user} navigate={navigate}/>}/>
+      <Route path='/search' element={<Search user={user} setUser={setUser}/>}/>
+      <Route path='/:username' element={<Profile user={user} setUser={setUser}/>}/>
+      <Route path='/:username/farm' element={<MyFarm user={user} setUser={setUser}/>}/>
     </Routes></div>
     </>
   ) 

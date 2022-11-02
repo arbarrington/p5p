@@ -7,10 +7,11 @@ Rails.application.routes.draw do
   post '/login',    to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   
-  resources :users, only: [:create, :show, :index, :destory]
-  resources :farms, only: [:create, :show, :index, :destory, :update]
+  resources :users, only: [:create, :index, :destroy]
+  resources :farms, only: [:create, :show, :index, :destroy, :update]
 
-  patch 'user/:username', to: 'users#update'
+  patch 'users/:username', to: 'users#update'
+  get 'users/:username', to: 'users#show'
 
   get '*path',
     to: 'fallback#index',
