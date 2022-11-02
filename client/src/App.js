@@ -8,7 +8,7 @@ import { Setup } from './pages/Setup';
 
 function App() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
-  
+
   useEffect(() => { localStorage.setItem("user", JSON.stringify(user));
   }, [user]);
   // auto-login (incase cookie expired or something
@@ -16,6 +16,10 @@ function App() {
     if (r.ok) { r.json().then((user) => setUser(user)); }
     else { setUser(null) }
   });}, []);
+
+  // TODO fix patch route
+  const fetchUserData = () => console.log('Fix your patch request bro')
+  
 
   if (!user) {
     return <Routes>

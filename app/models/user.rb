@@ -4,6 +4,7 @@ class User < ApplicationRecord
   validates :producer, presence: true
   
   has_one_attached :icon
+  has_many :farms
 
   def icon_url
     return Rails.application.routes.url_helpers.url_for(icon) if icon.attached?

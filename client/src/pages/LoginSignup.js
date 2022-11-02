@@ -17,7 +17,6 @@ export function LoginSignup({ user, setUser, isLogin }) {
 
     if (username.length===0) { setErrorText("Username must be filled"); return; }
     else if (password.length<6) { setErrorText("Password must be at least 6 characters in length"); return; }
-    else if (!producer) {setErrorText("You must select whether you are a producer or consumer"); return;}
     else { setErrorText("") }
 
     const formData = new FormData()
@@ -32,7 +31,7 @@ export function LoginSignup({ user, setUser, isLogin }) {
       body: formData
     }).then(r=>{ if (r.ok) { r.json().then(user=>{
       setUser(user) // save user details
-      // TODO if signup, nav to iama, else navigate to home, if i am a is null always return to loginsignup
+      // TODO fix the routing to allow false for producer, just not null
       isLogin ? navigate("/") : navigate("/setup") // send user to setup if they just signed up
     })} else {
       r.json().then(({errors})=>{
