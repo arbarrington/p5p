@@ -1,12 +1,13 @@
 import {FarmCard} from '../components/FarmCard';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 
 export function MyOperations ({user, setUser, navigate}) {
-console.log('page load', user.farms)
+
+  console.log('page load', user.farms)
 
   const fetchUserData = ()=> fetch(`/users/${user.username}`)
-  .then(r=>r.json()).then(data=>{ console.log('successful fetch',data.Farms) })
-// eslint-disable-next-line
+  .then(r=>r.json()).then(data=>{ console.log('successful fetch',data.products) })
+  // eslint-disable-next-line
   useEffect(() => { fetchUserData() }, [user.username])
 
   return (<>

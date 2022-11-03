@@ -35,13 +35,13 @@ function App() {
 
   return (
     <>
-    <Navbar user={user} logout={()=>setUser(null)}/>
+    <Navbar user={user} logout={()=>{setUser(null)}}/>
     <div className="App"><Routes>
       <Route path='/' element={<Home user={user} setUser={setUser} navigate={navigate}/>}/>
       <Route path='/setup' element={<Setup user={user} navigate={navigate}/>}/>
       <Route path='/search' element={<Search user={user} setUser={setUser} navigate={navigate}/>}/>
       <Route path='/:username' element={<Profile user={user} setUser={setUser} navigate={navigate}/>}/>
-      <Route path='/:username/farm' element={<MyOperations user={user} setUser={setUser} navigate={navigate}/>}/>
+      <Route path='/:username/operations' element={<MyOperations user={user} setUser={setUser} navigate={navigate}/>}/>
     </Routes></div>
     </>
   ) 
