@@ -5,7 +5,7 @@ import { LoginSignup } from './pages/LoginSignup';
 import { Home } from './pages/Home';
 import { Search } from './pages/Search';
 import { Profile } from './pages/Profile';
-import { MyFarm } from './pages/MyFarm';
+import { MyOperations } from './pages/MyOperations';
 import { Navbar } from './components/Navbar';
 import { Setup } from './pages/Setup';
 import {useNavigate} from 'react-router-dom';
@@ -41,7 +41,7 @@ function App() {
       <Route path='/setup' element={<Setup user={user} navigate={navigate}/>}/>
       <Route path='/search' element={<Search user={user} setUser={setUser} navigate={navigate}/>}/>
       <Route path='/:username' element={<Profile user={user} setUser={setUser} navigate={navigate}/>}/>
-      <Route path='/:username/farm' element={<MyFarm user={user} setUser={setUser} navigate={navigate}/>}/>
+      <Route path='/:username/farm' element={<MyOperations user={user} setUser={setUser} navigate={navigate}/>}/>
     </Routes></div>
     </>
   ) 

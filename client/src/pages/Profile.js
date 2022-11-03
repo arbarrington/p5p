@@ -17,7 +17,7 @@ export function Profile ({user, navigate}) {
     if (icon)   formData.append('icon', icon, icon.name)
     console.log("patch profile triggered", profileInfo)
 
-    fetch(`/user/${user.username}`, {
+    fetch(`/users/${user.username}`, {
       method: "PATCH",
       body: formData
       }).then(r=>{if (r.ok) {
@@ -43,13 +43,18 @@ export function Profile ({user, navigate}) {
       }})
   }
   return (<>
-    <h1>Edit your information</h1>
+    <h1>Update your...</h1>
     <form>
-    <LabeledInput value={profileInfo.display_name} name="display_name" label="Your Name" onChange={(e)=>handleProfileEdit(e)}/>
-    <LabeledInput value={profileInfo.bio} name="bio" label="Your Bio" onChange={(e)=>handleProfileEdit(e)}/>
+    <LabeledInput value={profileInfo.display_name} name="display_name" label="Displayed name:" onChange={(e)=>handleProfileEdit(e)}/>
+    <LabeledInput value={profileInfo.bio} name="bio" label="Biography" onChange={(e)=>handleProfileEdit(e)}/>
+    <div className="">
+      <label htmlFor="icon-input">Icon:</label>
+      {/* <div className="spacer"/> */}
+      <input id="icon-input" type="file" accept="image/*" onChange={e=>setIcon(e.target.files[0])}/>
+    </div>
     <input type="submit" onClick={(e)=>{patchProfile(e)}}/>
     </form>
-      {user.producer?<>
+      {/* {user.producer?<>
       <h1>Edit your Farm</h1>
       <form>
       <LabeledInput value={farmInfo.name} name="name" label="Farm Name" onChange={(e)=>handleFarmEdit(e)}/>
@@ -60,6 +65,6 @@ export function Profile ({user, navigate}) {
       <input type="submit" onClick={(e)=>{patchFarm(e)}}/>
       </form>
       </>
-      :null}
+      :null} */}
   </>)
 }

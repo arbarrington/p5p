@@ -1,6 +1,6 @@
 class FarmsController < ApplicationController
   def index
-    render json: Farm.all, status: :ok
+    render json: Farm.all,  status: :ok
   end
 
   def create
