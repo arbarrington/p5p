@@ -42,11 +42,11 @@ function App() {
     <>
     <Navbar user={user} logout={()=>setUser(null)}/>
     <div className="App"><Routes>
-      <Route path='/' element={<Home user={user} setUser={setUser}/>}/>
+      <Route path='/' element={<Home user={user} setUser={setUser} navigate={navigate}/>}/>
       <Route path='/setup' element={<Setup user={user} navigate={navigate}/>}/>
-      <Route path='/search' element={<Search user={user} setUser={setUser}/>}/>
-      <Route path='/:username' element={<Profile user={user} setUser={setUser}/>}/>
-      <Route path='/:username/farm' element={<MyFarm user={user} setUser={setUser}/>}/>
+      <Route path='/search' element={<Search user={user} setUser={setUser} navigate={navigate}/>}/>
+      <Route path='/:username' element={<Profile user={user} setUser={setUser} navigate={navigate}/>}/>
+      <Route path='/:username/farm' element={<MyFarm user={user} setUser={setUser} navigate={navigate}/>}/>
     </Routes></div>
     </>
   ) 

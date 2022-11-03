@@ -6,6 +6,7 @@ export function Navbar ({user, logOut=()=>{}}) {
   const [path, setPath] = useState("")
   const [LogoutPopup, setLogoutPopup] = useState(false)
   
+  // TODO : add a section for consumer analytics in the farmers navbar
   return (
     <header className="navbar col" onClick={()=>setPath(window.location.href.split('/').slice(3)[0])}>
       <Link to="/"><button aria-label="home" >Home</button></Link>
