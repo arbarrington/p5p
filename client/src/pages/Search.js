@@ -4,7 +4,8 @@ import {ProductCard} from "../components/ProductCard"
 export function Search () {
   const [searchTerm, setSearchTerm] = useState("")
 
-  // TODO figure out location service
+  // TODO figure out location service that shows nearby farms
+  // TODO 
   return (<>
     <h1>Browse Foods and Farms @Your location</h1>
     <h2>Today's Deals</h2>

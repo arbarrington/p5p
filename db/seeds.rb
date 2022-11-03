@@ -74,11 +74,159 @@ farms = [
   }
 ]
 
+products = [
+  {
+    farm_id: 1,
+    name: "Carrots",
+    price: 2.5,
+    unit: "lb.",
+    description: "Organic Danvers",
+    attachment: "",
+    stocked: true
+  },
+  {
+    farm_id: 1,
+    name: "Carrots",
+    price: 3,
+    unit: "lb.",
+    description: "Regeneratively sourced Nantes",
+    attachment: "",
+    stocked: false
+  },
+  {
+    farm_id: 1,
+    name: "Chicken",
+    price: 8,
+    unit: "lb.",
+    description: "Never couped",
+    attachment: "",
+    stocked: true
+  },
+  {
+    farm_id: 1,
+    name: "Eggs",
+    price: 6,
+    unit: "dozen",
+    description: "Large Brown",
+    attachment: "",
+    stocked: true
+  },
+  {
+    farm_id: 1,
+    name: "Carrots",
+    price: 2.5,
+    unit: "lb.",
+    description: "Organic Danvers",
+    attachment: "",
+    stocked: true
+  },
+  {
+    farm_id: 2,
+    name: "Lettuce",
+    price: 1,
+    unit: "head",
+    description: "Batavia, organic",
+    attachment: "",
+    stocked: true
+  },
+  {
+    farm_id: 2,
+    name: "Tomatoes",
+    price: 4,
+    unit: "lb.",
+    description: "Cherry",
+    attachment: "",
+    stocked: true
+  },
+  {
+    farm_id: 2,
+    name: "Squash",
+    price: 5,
+    unit: "lb.",
+    description: "Honeynut",
+    attachment: "",
+    stocked: true
+  },
+  {
+    farm_id: 2,
+    name: "Honey",
+    price: 2,
+    unit: "oz.",
+    description: "Kansas bees",
+    attachment: "",
+    stocked: false
+  },
+  {
+    farm_id: 2,
+    name: "Oregano",
+    price: 4,
+    unit: "unit",
+    description: "Fresh, finely-ground",
+    attachment: "",
+    stocked: true
+  },
+  {
+    farm_id: 3,
+    name: "Beef",
+    price: 18,
+    unit: "lb.",
+    description: "Tenderloin",
+    attachment: "",
+    stocked: true
+  },
+  {
+    farm_id: 3,
+    name: "Beef",
+    price: 12,
+    unit: "lb.",
+    description: "Chuck",
+    attachment: "",
+    stocked: true
+  },
+  {
+    farm_id: 3,
+    name: "Beef",
+    price: 17,
+    unit: "lb.",
+    description: "Sirloin",
+    attachment: "",
+    stocked: false
+  },
+  {
+    farm_id: 5,
+    name: "Milk",
+    price: 6,
+    unit: "gallon",
+    description: "Grass-fed cows",
+    attachment: "",
+    stocked: true
+  },
+  {
+    farm_id: 5,
+    name: "Green beans",
+    price: 3,
+    unit: "lb.",
+    description: "Organic poles",
+    attachment: "",
+    stocked: true
+  },
+  {
+    farm_id: 5,
+    name: "Milk",
+    price: 6,
+    unit: "gallon",
+    description: "Grass-fed cows",
+    attachment: "",
+    stocked: false
+  },
+]
 
-User.create!(users)
+
+# User.create!(users)
 # Farm.destroy_all
-Farm.create!(farms)
+# Farm.create!(farms)
 # User.destroy_all
+Product.create!(products)
 
 
 puts "Done!"

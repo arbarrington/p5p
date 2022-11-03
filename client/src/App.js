@@ -22,12 +22,7 @@ function App() {
     else { setUser(null) }
   });}, []);
 
-  // TODO fix patch route
-  const fetchUserData = () => {console.log("fix me in app.js")}
-  
-  // ()=> fetch(`/user/${user.username}`)
-  //   .then(r=>r.json()).then(data=>{ setUser(data) })
-  // useEffect(() => { fetchUserData() }, [username])
+
 
   if (!user) {
     return <Routes>

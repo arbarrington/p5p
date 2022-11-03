@@ -5,6 +5,7 @@ class User < ApplicationRecord
   
   has_one_attached :icon
   has_many :farms
+  has_many :products, through: :farms
 
   def icon_url
     return Rails.application.routes.url_helpers.url_for(icon) if icon.attached?

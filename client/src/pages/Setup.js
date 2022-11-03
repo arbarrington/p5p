@@ -49,16 +49,20 @@ export function Setup ({user, fetchUserData, navigate}) {
     <form>
     <LabeledInput value={profileInfo.display_name} name="display_name" label="Your Name" onChange={(e)=>handleEdit(e)}/>
     <LabeledInput value={profileInfo.bio} name="bio" label="Your Bio" onChange={(e)=>handleEdit(e)}/>
+    <input type="submit" onClick={()=>{patchProfile(); if (user.producer){postFarm()}}}/>
+    </form>
     {user.producer ? (<>
+    <form>
       <h1>Tell us about your farm</h1>
       <LabeledInput value={farmInfo.name} name="name" label="Farm Name" onChange={(e)=>handleEdit(e)}/>
       <LabeledInput value={farmInfo.location} name="location" label="Where are you located?" onChange={(e)=>handleEdit(e)}/>
       <LabeledInput value={farmInfo.message} name="message" label="Tell consumers about your operation:" onChange={(e)=>handleEdit(e)}/>
       <LabeledInput value={farmInfo.website} name="website" label="Link to your operation's website (if applicable):" onChange={(e)=>handleEdit(e)}/>
       <LabeledInput value={farmInfo.banner} name="banner" label="Photo of your operation" onChange={(e)=>handleEdit(e)} type="file" accept="image/*" htmlFor="banner-input"/>
-    </>):null}
-    <input type="submit" onClick={()=>{patchProfile(); if (user.producer){postFarm()}}}/>
+      <input type="submit" onClick={()=>{patchProfile(); if (user.producer){postFarm()}}}/>
     </form>
+    </>):null}
+
     </>
   )
 }

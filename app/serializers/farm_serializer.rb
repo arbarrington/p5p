@@ -1,4 +1,4 @@
 class FarmSerializer < ActiveModel::Serializer
-  attributes :id, :name, :location, :message, :website, :banner
-  has_one :user
+  attributes :id, :name, :location, :message, :website, :banner, :user_id
+  has_many :products
 end
