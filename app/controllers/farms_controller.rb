@@ -8,6 +8,12 @@ class FarmsController < ApplicationController
     render json: farm, status: :created
   end
 
+  def update
+    farm = Farm.find(params[:id])
+    farm.update(farm_params)
+    render json: farm, status: :accepted
+  end
+
   private
 
   def farm_params

@@ -1,6 +1,6 @@
 import './App.css';
 import { useState, useEffect } from "react";
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useParams } from 'react-router-dom';
 import { LoginSignup } from './pages/LoginSignup';
 import { Home } from './pages/Home';
 import { Search } from './pages/Search';
@@ -13,6 +13,8 @@ import {useNavigate} from 'react-router-dom';
 function App() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
   const navigate = useNavigate()
+  let {username} = useParams();
+  
 
   useEffect(() => { localStorage.setItem("user", JSON.stringify(user));
   }, [user]);
@@ -40,8 +42,8 @@ function App() {
       <Route path='/' element={<Home user={user} setUser={setUser} navigate={navigate}/>}/>
       <Route path='/setup' element={<Setup user={user} navigate={navigate}/>}/>
       <Route path='/search' element={<Search user={user} setUser={setUser} navigate={navigate}/>}/>
-      <Route path='/:username' element={<Profile user={user} setUser={setUser} navigate={navigate}/>}/>
-      <Route path='/:username/operations' element={<MyOperations user={user} setUser={setUser} navigate={navigate}/>}/>
+      <Route path=":username" element={<Profile user={user} setUser={setUser} navigate={navigate}/>}/>
+      <Route path="/operations" element={<MyOperations user={user} setUser={setUser} navigate={navigate}/>}/>
     </Routes></div>
     </>
   ) 

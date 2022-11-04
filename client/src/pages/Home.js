@@ -6,8 +6,10 @@ export function Home ({user}) {
       <h3>{user.bio}</h3>
       <h1 className="">My Orders and Subscriptions</h1>
       <p>Order 1 details</p>
-      <h1>Favorite Producers</h1>
       <p>Recurring subscription details</p>
+      {!user.producer?
+        <h1>Favorite Producers</h1>
+      :<h1>Consumer Analytics</h1>}
     </div>
   )
 }

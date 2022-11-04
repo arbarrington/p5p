@@ -11,7 +11,7 @@ export function Profile ({user, navigate}) {
 
 
   function patchProfile (e) {
-    e.preventDefault()
+    // e.preventDefault()
     const formData = new FormData()
     for (const key in profileInfo) { formData.append(key, profileInfo[key]) }
     if (icon)   formData.append('icon', icon, icon.name)
