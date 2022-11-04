@@ -1,5 +1,5 @@
 import {FarmCard} from '../components/FarmCard';
-import {ProductsEditor} from '../components/ProductsEditor';
+import {ProductList} from '../components/ProductList';
 import {useEffect, useState} from 'react';
 
 export function MyOperations ({user, setUser, navigate}) {
@@ -27,7 +27,7 @@ export function MyOperations ({user, setUser, navigate}) {
 
       <div className='col'>
         <h1>{selectedFarm.name}</h1>
-        <ProductsEditor farm={selectedFarm} products={user.products} className='row'/>
+        <ProductList farm={selectedFarm} products={user.products} className='row'/>
       </div>
 
         {/* {user.products.filter((product)=>{

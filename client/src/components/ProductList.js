@@ -1,7 +1,6 @@
 import { ProductCard } from "./ProductCard"
 
-export function ProductsEditor ({farm, products}) {
-
+export function ProductList ({farm, products}) {
 
   const selectedFarmProducts = products.filter((product)=> {
     return product.farm_id === farm.id
@@ -11,8 +10,7 @@ export function ProductsEditor ({farm, products}) {
   
   return (<>
     <div className="col">
-    <h1>I am the products editor for {farm.name}</h1>
-    <p>my farm id is {farm.id}</p>
+    <button>Add Product for {farm.name}</button>
     {selectedFarmProducts.map((product)=> {return(
       <ProductCard className='row' product={product}/>
     )})}
