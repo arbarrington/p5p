@@ -14,7 +14,7 @@ export function ProductsEditor ({farm, products}) {
     <h1>I am the products editor for {farm.name}</h1>
     <p>my farm id is {farm.id}</p>
     {selectedFarmProducts.map((product)=> {return(
-      <h1>{product.name}</h1>
+      <ProductCard className='row' product={product}/>
     )})}
     </div>
   </>)
