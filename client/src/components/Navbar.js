@@ -3,7 +3,7 @@ import { Link, useParams, NavLink } from "react-router-dom";
 import { useState } from 'react';
 import {Button, Nav, Container, Navbar as Navbarbs} from 'react-bootstrap'
 
-export function Navbar ({user}) {
+export function Navbar ({user, cartOpen, setCartOpen}) {
   const [path, setPath] = useState("")
   let {username} = useParams()
   
@@ -36,7 +36,7 @@ export function Navbar ({user}) {
         {user.producer?null:
 
           <Button
-            
+            onClick={()=>setCartOpen(true)}
             style={{ width: "3rem", height: "3rem", position: "relative" }}
             variant="outline-primary"
             className="rounded-circle"

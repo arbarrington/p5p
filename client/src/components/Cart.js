@@ -2,16 +2,19 @@
 // TODO : offer a deal on recurring orders/subscriptions
 // TODO : farms can offer recipe packages based on number of servings
 // TODO : farms can offer seasonal deals
+import { Offcanvas, Stack } from "react-bootstrap"
 
-export function Cart ({cart, setCart}) {
-  console.log(cart)
-  
+export function Cart ({cartOpen, setCartOpen}) {
+
+  console.log('cart open?', cartOpen)
   return(
-    <div>
+    <Offcanvas show={cartOpen} onHide={()=>setCartOpen(false)} placement="end">
+      <Stack gap={3}>
       <h1>hi</h1>
-      {cart.map((product)=>{
-        <h1>{product.name}</h1>
-      })}
-    </div>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      </Stack>
+    </Offcanvas>
   )
 }

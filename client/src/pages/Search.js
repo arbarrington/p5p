@@ -22,9 +22,8 @@ export function Search ({user, setCart, cart}) {
   // TODO figure out location service that shows nearby farms
   // TODO 
   return (<>
-    <h1>Browse Foods and Farms @Your location</h1>
+    <h1>Browse from @Nearby</h1>
     
-    <h2>Search by food, category, or farm</h2>
     <input type="text" id="chirpsearch" onChange={(e)=>setSearchTerm(e.target.value)} placeholder="Search products nearby..."></input>
     
     <h2>Today's Deals</h2>
@@ -37,15 +36,26 @@ export function Search ({user, setCart, cart}) {
     <h2>Popular Farms</h2>
     <Row>
     {farms.map((farm)=>
-    <Col>
-     <FarmCard className='row' selectedFarm={selectedFarm} setSelectedFarm={setSelectedFarm} setSelectedProducts={setSelectedProducts}user={user} key={farm.id} farm={farm}/>
+      <Col>
+      <FarmCard className='row' 
+                selectedFarm={selectedFarm} 
+                setSelectedFarm={setSelectedFarm} 
+                setSelectedProducts={setSelectedProducts}
+                user={user} 
+                key={farm.id} 
+                farm={farm}/>
      </Col>
     )}
     </Row>
 
     <div className='col'>
       <h1>Products from {selectedFarm.name}</h1>
-      <ProductList cart={cart} setCart={setCart} products={selectedProducts} farm={selectedFarm} user={user} className='row'/> 
+      <ProductList cart={cart} 
+                   setCart={setCart} 
+                   products={selectedProducts} 
+                   farm={selectedFarm} 
+                   user={user} 
+                   className='row'/> 
     </div>
 
   </>)

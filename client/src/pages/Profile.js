@@ -1,5 +1,6 @@
 import { LabeledInput } from "../components/LabeledInput"
 import { useEffect, useState } from "react"
+import {Button} from "react-bootstrap"
 
 export function Profile ({user, navigate, logOut=()=>{}}) {
   const [profileInfo, setProfileInfo] = useState({user})
@@ -43,7 +44,7 @@ export function Profile ({user, navigate, logOut=()=>{}}) {
     <input type="submit" onClick={(e)=>{patchProfile(e)}}/>
     </form>
     <div onClick={()=>fetch('/logout', {method:"DELETE"}).then(r=>{if(r.ok){logOut()}})}>
-      <button>Log Out @{user.username}</button>
+      <Button>Log Out @{user.username}</Button>
     </div>
       {/* {user.producer?<>
       <h1>Edit your Farm</h1>

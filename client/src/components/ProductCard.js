@@ -9,7 +9,7 @@ export function ProductCard ({product, user, setCart, cart}) {
 
 
   return (<>
-    <Card className="h-100 d-flex flex-column">
+    <Card className="h-100 d-flex flex-column" key={product.id}>
       <Card.Title className="justify-content-between align-items-baseline mb-2">{product.name}</Card.Title>
       {product.image?<img src={product.image} alt={"No image provided"} />:null}
       <span>{product.description}</span>
