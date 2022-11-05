@@ -8,11 +8,12 @@ import { Profile } from './pages/Profile';
 import { MyOperations } from './pages/MyOperations';
 import { Navbar } from './components/Navbar';
 import { Setup } from './pages/Setup';
-import { Cart } from './pages/Cart';
+import { Cart } from './components/Cart';
 import {useNavigate} from 'react-router-dom';
 
 function App() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
+  const [cart, setCart] = useState([])
   const navigate = useNavigate()
   let {username} = useParams();
   
@@ -35,7 +36,8 @@ function App() {
       <Route path="*" element={<LoginSignup isLogin={false} user={user} setUser={setUser} />} />
     </Routes>
   }
-
+// TODO : import {Container, Navbar as NavbarBs} from "react-boostrap"
+// TODO : place container inside navbarbs and give navbarbs class bg-white shadow-sm mb-3
   return (
     <>
     <Navbar user={user} logout={()=>{setUser(null)}}/>
@@ -43,8 +45,8 @@ function App() {
       <Route path='/' element={<Home user={user} setUser={setUser} navigate={navigate}/>}/>
       <Route path='/setup' element={<Setup user={user} navigate={navigate}/>}/>
       <Route path=":username" element={<Profile user={user} setUser={setUser} navigate={navigate}/>}/>
-      <Route path='/search' element={<Search user={user} setUser={setUser} navigate={navigate}/>}/>
-      <Route path="/cart" element={<Cart user={user} setUser={setUser} navigate={navigate}/>}/>
+      <Route path='/search'  element={<Search user={user} setUser={setUser} navigate={navigate} setCart={setCart} cart={cart}/>}/>
+      <Route path="/cart" element={<Cart user={user} setUser={setUser} navigate={navigate} setCart={setCart} cart={cart}/>}/>
       <Route path="/operations" element={<MyOperations user={user} setUser={setUser} navigate={navigate}/>}/>
     </Routes></div>
     </>

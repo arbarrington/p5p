@@ -3,8 +3,15 @@
 // TODO : farms can offer recipe packages based on number of servings
 // TODO : farms can offer seasonal deals
 
-export function Cart () {
+export function Cart ({cart, setCart}) {
+  console.log(cart)
+  
   return(
-    <h1>I'm the cart</h1>
+    <div>
+      <h1>hi</h1>
+      {cart.map((product)=>{
+        <h1>{product.name}</h1>
+      })}
+    </div>
   )
 }

@@ -24,26 +24,27 @@ export function ProductEditor ({product, exit, id, setAddNew, addNew, farm_id}) 
         setAddNew(false)
       }})
   }
-    return (<>
-      <div className="modalOverlay">
-        <div className='modal'>
-      <h1>{addNew?"Add":"Edit"} product</h1>
-      <form onSubmit={patchProduct}>
-      <button className="closeModal" aria-label="close" onClick={exit}>X</button>
-      <LabeledInput value={productInfo.name} placeholder={product.name} name="name" label="Product Name" onChange={(e)=>handleProductEdit(e)}/>
-      <LabeledInput value={productInfo.description} name="description" label="Product Description" onChange={(e)=>handleProductEdit(e)}/>
-      <LabeledInput value={productInfo.price} name="price" label="Product Price" onChange={(e)=>handleProductEdit(e)}/>
-      <LabeledInput value={productInfo.unit} name="unit" label="Product Unit" onChange={(e)=>handleProductEdit(e)}/>
-      <select value={productInfo.stocked} name="stocked" label="Available?" onChange={(e)=>handleProductEdit(e)}>
-        <option value={true} label="Yes, available now"></option>
-        <option value={false} label="Not available now"></option>
-      </select>
-      <label htmlFor="product-input">Product Image:</label>
-      <input value={productInfo.image} name="banner" label="Photo of your product" onChange={e=>setImage(e.target.files[0])} type="file" accept="image/*" htmlFor="product-input"/>
-      <input type="submit" />
-      </form>
-      </div>
-      </div>
-    </>)
+
+  return (<>
+    <div className="modalOverlay">
+      <div className='modal'>
+    <h1>{addNew?"Add":"Edit"} product</h1>
+    <form onSubmit={patchProduct}>
+    <button className="closeModal" aria-label="close" onClick={exit}>X</button>
+    <LabeledInput value={productInfo.name} name="name" label="Product Name" onChange={(e)=>handleProductEdit(e)}/>
+    <LabeledInput value={productInfo.description} name="description" label="Product Description" onChange={(e)=>handleProductEdit(e)}/>
+    <LabeledInput value={productInfo.price} name="price" label="Product Price" onChange={(e)=>handleProductEdit(e)}/>
+    <LabeledInput value={productInfo.unit} name="unit" label="Product Unit" onChange={(e)=>handleProductEdit(e)}/>
+    <select value={productInfo.stocked} name="stocked" label="Available?" onChange={(e)=>handleProductEdit(e)}>
+      <option value={true} label="Yes, available now"></option>
+      <option value={false} label="Not available now"></option>
+    </select>
+    <label htmlFor="product-input">Product Image:</label>
+    <input value={productInfo.image} name="banner" label="Photo of your product" onChange={e=>setImage(e.target.files[0])} type="file" accept="image/*" htmlFor="product-input"/>
+    <input type="submit" />
+    </form>
+    </div>
+    </div>
+  </>)
 
 }

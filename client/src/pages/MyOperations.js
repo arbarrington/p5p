@@ -11,7 +11,7 @@ export function MyOperations ({user, setUser, navigate}) {
   // eslint-disable-next-line
   useEffect(() => { fetchUserData() }, [user.username])
 
-
+  // TODO : ADD OPERATION
   return (<>
     <div className="row">
       {user.farms.map((farm)=>{

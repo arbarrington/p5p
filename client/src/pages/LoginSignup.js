@@ -31,7 +31,6 @@ export function LoginSignup({ user, setUser, isLogin }) {
       body: formData
     }).then(r=>{ if (r.ok) { r.json().then(user=>{
       setUser(user) // save user details
-      // TODO fix the routing to allow false for producer, just not null
       isLogin ? navigate("/") : navigate("/setup") // send user to setup if they just signed up
     })} else {
       r.json().then(({errors})=>{
@@ -41,7 +40,7 @@ export function LoginSignup({ user, setUser, isLogin }) {
   }
 
   let errorNode = errorText.length===0 ? null : (<span className="centered" style={{color:"red", textAlign:"center"}}>{errorText}</span>)
-
+  
  
   return (
     <div className="col">

@@ -1,7 +1,7 @@
 import { LabeledInput } from "../components/LabeledInput"
 import { useEffect, useState } from "react"
 
-export function Profile ({user, navigate}) {
+export function Profile ({user, navigate, logOut=()=>{}}) {
   const [profileInfo, setProfileInfo] = useState({user})
   const [icon, setIcon] = useState(null)
 
@@ -42,6 +42,9 @@ export function Profile ({user, navigate}) {
 
     <input type="submit" onClick={(e)=>{patchProfile(e)}}/>
     </form>
+    <div onClick={()=>fetch('/logout', {method:"DELETE"}).then(r=>{if(r.ok){logOut()}})}>
+      <button>Log Out @{user.username}</button>
+    </div>
       {/* {user.producer?<>
       <h1>Edit your Farm</h1>
       <form>
