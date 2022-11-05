@@ -20,7 +20,7 @@ export function FarmEditor ({exit, id, navigate, reload}) {
       method: "PATCH",
       body: formData
       }).then(r=>{if (r.ok) {
-        navigate('/operations')
+        navigate('/')
         // TODO : fetch user data
       }})
   }

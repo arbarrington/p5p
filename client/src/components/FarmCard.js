@@ -4,13 +4,13 @@ import {FarmEditor} from './FarmEditor'
 export function FarmCard ({id, navigate, reload, farm, setSelectedFarm}) {
   const [showEditorModal, setShowEditorModal] = useState(false)
 
-  function handleCardSelection() {
+  function handleFarmSelection() {
     setSelectedFarm(farm)
   }
 
 
   return (<>
-    <div key={id} onClick={()=>{handleCardSelection()}}>
+    <div key={id} onClick={()=>{handleFarmSelection()}}>
     <div className="card" style={{backgroundImage:`url(${farm.banner})`}}>
       <h1>{farm.name}</h1>
       <img className="" src={farm.banner} alt="No banner is available yet" />

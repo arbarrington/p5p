@@ -3,12 +3,9 @@ import { useEffect, useState } from "react"
 
 export function Profile ({user, navigate}) {
   const [profileInfo, setProfileInfo] = useState({user})
-
   const [icon, setIcon] = useState(null)
 
-  
   const handleProfileEdit = ({target:{name, value}})=>setProfileInfo(profileInfo=>({...profileInfo, [name]: value}))
-
 
   function patchProfile (e) {
     // e.preventDefault()
@@ -21,11 +18,9 @@ export function Profile ({user, navigate}) {
       method: "PATCH",
       body: formData
       }).then(r=>{if (r.ok) {
-        navigate('/')
-        
+        navigate('/') 
       }})
   }
-
 
   return (<>
     <h1>Update your...</h1>

@@ -65,8 +65,6 @@ export function LoginSignup({ user, setUser, isLogin }) {
               </select>
           </div>
         </div>}
-        {/* {<span className="errorText">{errorText}</span>} */}
-
         <div className="row centerChildren">
           <button className="centered" type="submit">Submit</button>
           <div className="spacer"/>
