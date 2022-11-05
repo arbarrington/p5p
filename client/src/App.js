@@ -8,6 +8,7 @@ import { Profile } from './pages/Profile';
 import { MyOperations } from './pages/MyOperations';
 import { Navbar } from './components/Navbar';
 import { Setup } from './pages/Setup';
+import { Cart } from './pages/Cart';
 import {useNavigate} from 'react-router-dom';
 
 function App() {
@@ -41,8 +42,9 @@ function App() {
     <div className="App"><Routes>
       <Route path='/' element={<Home user={user} setUser={setUser} navigate={navigate}/>}/>
       <Route path='/setup' element={<Setup user={user} navigate={navigate}/>}/>
-      <Route path='/search' element={<Search user={user} setUser={setUser} navigate={navigate}/>}/>
       <Route path=":username" element={<Profile user={user} setUser={setUser} navigate={navigate}/>}/>
+      <Route path='/search' element={<Search user={user} setUser={setUser} navigate={navigate}/>}/>
+      <Route path="/cart" element={<Cart user={user} setUser={setUser} navigate={navigate}/>}/>
       <Route path="/operations" element={<MyOperations user={user} setUser={setUser} navigate={navigate}/>}/>
     </Routes></div>
     </>

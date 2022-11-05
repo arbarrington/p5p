@@ -22,7 +22,7 @@ export function Search ({user}) {
     <h2>Popular Farms like </h2>
     <div className="row">
     {farms.map((farm)=>
-     <FarmCard className='row' key={farm.id} farm={farm}/>
+     <FarmCard className='row' user={user} key={farm.id} farm={farm}/>
     )}
     </div>
     <h2>Popular Foods</h2>
