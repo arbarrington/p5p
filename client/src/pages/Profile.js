@@ -8,7 +8,7 @@ export function Profile ({user, navigate}) {
   const handleProfileEdit = ({target:{name, value}})=>setProfileInfo(profileInfo=>({...profileInfo, [name]: value}))
 
   function patchProfile (e) {
-    // e.preventDefault()
+    e.preventDefault()
     const formData = new FormData()
     for (const key in profileInfo) { formData.append(key, profileInfo[key]) }
     if (icon)   formData.append('icon', icon, icon.name)
@@ -32,6 +32,14 @@ export function Profile ({user, navigate}) {
       {/* <div className="spacer"/> */}
       <input id="icon-input" type="file" accept="image/*" onChange={e=>setIcon(e.target.files[0])}/>
     </div>
+
+    <div>Did you mean to make a Producer account?
+      <select value={profileInfo.producer} name="producer" label="Did you mean to make a Producer account?" onChange={(e)=>handleProfileEdit(e)}>
+        <option value={false} label="No, I am here to purchase produce"></option>
+        <option value={true} label="Yes, I am here to sell my produce"></option>
+      </select>
+    </div>
+
     <input type="submit" onClick={(e)=>{patchProfile(e)}}/>
     </form>
       {/* {user.producer?<>

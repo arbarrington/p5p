@@ -15,7 +15,7 @@ export function ProductCard ({product, user}) {
       <h4>{product.stocked? "Listed as Available" : "Listed as Unavailable"}</h4>
         {user.producer?
         <button className="primary" onClick={()=>setShowEditorModal(true)}>Edit Product</button>
-        :null}
+        :<button className="primary" onClick={()=>console.log('figuring out the cart')}>Add To Cart</button>}
     </div>
     {showEditorModal?<ProductEditor id={product.id} product={product} exit={()=>setShowEditorModal(false)}/>:null}
   </>)

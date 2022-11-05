@@ -16,7 +16,7 @@ export function ProductList ({farm, products, user}) {
     <button onClick={()=>{setAddNew(true);setShowEditorModal(true)}}>Add Product for {farm.name}</button>
     :null}
     {selectedFarmProducts.map((product)=> {return(
-      <ProductCard addNew={addNew} user={user} className='row' product={product}/>
+      <ProductCard key={product.id}addNew={addNew} user={user} className='row' product={product}/>
     )})}
     </div>
     {showEditorModal?<ProductEditor farm_id={farm.id} addNew={addNew} setAddNew={setAddNew} exit={()=>{setShowEditorModal(false);setAddNew(false)}}/>:null}
