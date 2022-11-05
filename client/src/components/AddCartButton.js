@@ -4,7 +4,7 @@ import { useCart } from "../contexts/CartContext"
 export function AddCartButton ({product}) {
   const cartQuantity = 0
 
-  function handleAddCart(product) {
+  function handleAddCart() {
     console.log('adding to cart', product)
   }
 

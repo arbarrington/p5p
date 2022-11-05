@@ -4,7 +4,7 @@ import { LabeledInput } from "./LabeledInput";
 
 export function ProductEditor ({product, exit, id, setAddNew, addNew, farm_id}) {
   const [productInfo, setProductInfo] = useState({})
-  const [image, setImage] = useState(null)
+  const [attachment, setAttachment] = useState(null)
   console.log('addnew',addNew)
   const handleProductEdit = ({target:{name, value}})=>setProductInfo(productInfo=>({...productInfo, [name]: value}))
 
@@ -12,7 +12,7 @@ export function ProductEditor ({product, exit, id, setAddNew, addNew, farm_id}) 
     e.preventDefault()
     const formData = new FormData()
     for (const key in productInfo) { formData.append(key, productInfo[key]) }
-    if (image) formData.append('image', image, image.name)
+    if (attachment) formData.append('attachment', attachment, attachment.name)
     if (addNew) formData.append('farm_id', farm_id)
     console.log("farmid", farm_id)
 
@@ -40,7 +40,7 @@ export function ProductEditor ({product, exit, id, setAddNew, addNew, farm_id}) 
       <option value={false} label="Not available now"></option>
     </select>
     <label htmlFor="product-input">Product Image:</label>
-    <input value={productInfo.image} name="banner" label="Photo of your product" onChange={e=>setImage(e.target.files[0])} type="file" accept="image/*" htmlFor="product-input"/>
+    <input value={productInfo.attachment} name="banner" label="Photo of your product" onChange={e=>setAttachment(e.target.files[0])} type="file" accept="image/*" htmlFor="product-input"/>
     <input type="submit" />
     </form>
     </div>

@@ -23,7 +23,7 @@ export function Navbar ({user, cartOpen, setCartOpen}) {
            : 
            <>
             <Nav.Link to="/search" as={NavLink}>
-              Search
+              Shop
             </Nav.Link>
             
            </>} 
