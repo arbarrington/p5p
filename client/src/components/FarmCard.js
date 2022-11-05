@@ -1,12 +1,13 @@
 import {useState} from 'react'
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {FarmEditor} from './FarmEditor'
 
-export function FarmCard ({id, navigate, reload, farm, setSelectedFarm, user}) {
+export function FarmCard ({id, navigate, reload, farm, setSelectedFarm, user, setSelectedProducts}) {
   const [showEditorModal, setShowEditorModal] = useState(false)
 
   function handleFarmSelection() {
     setSelectedFarm(farm)
+    setSelectedProducts(farm.products)
   }
 
 
@@ -16,9 +17,9 @@ export function FarmCard ({id, navigate, reload, farm, setSelectedFarm, user}) {
       <h1>{farm.name}</h1>
       <img className="" src={farm.banner} alt="No banner is available yet" />
       <h4>{farm.message}</h4>
-      {user.producer?
+      {(user.producer && farm.website)?
       <button onClick={()=>setShowEditorModal(true)}className="primary">Edit Farm Info</button>
-      :<Link to={farm.website}><button className="primary">Visit {farm.name}'s Website</button></Link>
+      :<NavLink to={farm.website}><button className="primary">Visit {farm.name}'s Website</button></NavLink>
       }  
     </div>
     </div>

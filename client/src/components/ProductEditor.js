@@ -30,7 +30,7 @@ export function ProductEditor ({product, exit, id, setAddNew, addNew, farm_id}) 
       <h1>{addNew?"Add":"Edit"} product</h1>
       <form onSubmit={patchProduct}>
       <button className="closeModal" aria-label="close" onClick={exit}>X</button>
-      <LabeledInput value={productInfo.name} name="name" label="Product Name" onChange={(e)=>handleProductEdit(e)}/>
+      <LabeledInput value={productInfo.name} placeholder={product.name} name="name" label="Product Name" onChange={(e)=>handleProductEdit(e)}/>
       <LabeledInput value={productInfo.description} name="description" label="Product Description" onChange={(e)=>handleProductEdit(e)}/>
       <LabeledInput value={productInfo.price} name="price" label="Product Price" onChange={(e)=>handleProductEdit(e)}/>
       <LabeledInput value={productInfo.unit} name="unit" label="Product Unit" onChange={(e)=>handleProductEdit(e)}/>

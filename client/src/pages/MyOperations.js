@@ -11,19 +11,20 @@ export function MyOperations ({user, setUser, navigate}) {
   // eslint-disable-next-line
   useEffect(() => { fetchUserData() }, [user.username])
 
+
   return (<>
     <div className="row">
       {user.farms.map((farm)=>{
         // setSelectedFarm(farm)
         return(
-          <FarmCard setSelectedFarm={setSelectedFarm} reload={fetchUserData} navigate={navigate} id={farm.id} farm={farm} farmname={farm.name} message={farm.message} banner={farm.banner}/>
+          <FarmCard setSelectedFarm={setSelectedFarm} reload={fetchUserData} navigate={navigate} id={farm.id} farm={farm} user={user}/>
         )
       })}
     </div>
     
     <div className='col'>
       <h1>{selectedFarm.name}</h1>
-      <ProductList farm={selectedFarm} products={user.products} className='row'/>
+      <ProductList farm={selectedFarm} user={user} products={user.products} className='row'/>
     </div>
 
     {/* {user.products.filter((product)=>{
