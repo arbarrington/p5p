@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :products
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   
   post '/signup', to: 'users#create'
@@ -10,9 +10,12 @@ Rails.application.routes.draw do
   
   resources :users, only: [:create, :index, :destroy]
   resources :farms, only: [:create, :show, :index, :destroy, :update]
+  resources :products, only: [:create, :show, :index, :destroy, :update]
 
   patch 'users/:username', to: 'users#update'
   get 'users/:username', to: 'users#show'
+
+
 
   get '*path',
     to: 'fallback#index',
