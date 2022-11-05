@@ -1,7 +1,7 @@
 import { ProductCard } from "./ProductCard"
 import {ProductEditor} from './ProductEditor'
 import {useState} from 'react'
-import {Col, Row} from 'react-bootstrap'
+import {Col, Row, Button} from 'react-bootstrap'
 
 export function ProductList ({farm, products, user, setCart, cart}) {
   const [addNew, setAddNew] = useState(false)
@@ -14,7 +14,7 @@ export function ProductList ({farm, products, user, setCart, cart}) {
   return (<>
     <div className="col">
     {user.producer?
-    <button onClick={()=>{setAddNew(true);setShowEditorModal(true)}}>Add Product for {farm.name}</button>
+    <Button onClick={()=>{setAddNew(true);setShowEditorModal(true)}}>Add Product for {farm.name}</Button>
     :null}
     <Row md={3} xs={1} lg={5} className="g-3">
     {selectedFarmProducts.map((product)=> {return(
