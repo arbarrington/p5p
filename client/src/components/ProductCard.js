@@ -3,21 +3,21 @@ import { ProductEditor } from './ProductEditor'
 import {Card, Button} from 'react-bootstrap'
 import { AddCartButton } from './AddCartButton'
 
-export function ProductCard ({product, user, setCart, cart}) {
+export function ProductCard ({product, user, setCart, cart, setSelectedProduct}) {
 
 
-
+  function handleProductSelection() {
+    setSelectedProduct(product)
+  }
 
   return (<>
-    <Card className="h-100 d-flex flex-column" key={product.id}>
+    <Card className="h-100 d-flex flex-column" key={product.id} onClick={()=>{handleProductSelection()}}>
       <Card.Title className="justify-content-between align-items-baseline mb-2">{product.name}</Card.Title>
       {product.attachment?<img src={product.attachment} alt={"No image provided"} />:null}
       <span>{product.description}</span>
       <span>${product.price} per {product.unit}</span>
       <span>{product.stocked? "Listed as Available" : "Listed as Unavailable"}</span>
-        {user.producer?
-        <Button className="primary" >Edit Product</Button>
-        :<AddCartButton product={product} className="primary">Add To Cart</AddCartButton>}
+        
     </Card>
     <ProductEditor  id={product.id} product={product} />
   </>)

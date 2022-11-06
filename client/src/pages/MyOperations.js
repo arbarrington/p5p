@@ -39,19 +39,20 @@ export function MyOperations ({user, setUser, navigate}) {
 
   // TODO : ADD OPERATION
   return (<>
+    <h2>Select an Operation</h2>
     <Row>
       {user.farms.map((farm)=>{
         return(
           <Col>
             <FarmCard setSelectedFarm={setSelectedFarm} reload={fetchUserData} navigate={navigate} id={farm.id} farm={farm} user={user}/>  
-            <Button onClick={handleShow}>Edit Farm Info</Button>
+            <Button onClick={handleShow}>Edit/Remove Operation</Button>
           </Col>
         )
       })}
     </Row>
     
     <div className='col'>
-      <h1>{selectedFarm.name}</h1>
+      <h3>Products - {selectedFarm.name}</h3>
       <ProductList farm={selectedFarm} user={user} products={user.products} className='row'/>
     </div>
 
@@ -59,12 +60,10 @@ export function MyOperations ({user, setUser, navigate}) {
       (product.farm_id == selectedFarm.id)
     return <p>{product.name}</p> */}
 
-
-
       <Modal show={show} onHide={handleClose}>
           
           <Modal.Header closeButton>
-            <Modal.Title>Edit your Farm</Modal.Title>
+            <Modal.Title>Edit {selectedFarm.name}</Modal.Title>
           </Modal.Header>
 
           <Modal.Body>
