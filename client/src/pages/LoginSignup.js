@@ -11,6 +11,7 @@ export function LoginSignup({ user, setUser, isLogin }) {
   const [icon, setIcon] = useState(null)
   const [producer, setProducer] = useState(false)
 
+  // TODO : include email in signin
 
   function handleSubmit(event) {
     event.preventDefault()

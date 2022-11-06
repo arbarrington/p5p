@@ -56,11 +56,12 @@ function App() {
     <div className="App"><Routes>
       <Route path='/' element={<Home user={user} setUser={setUser} navigate={navigate}/>}/>
       <Route path='/setup' element={<Setup user={user} navigate={navigate}/>}/>
+      <Route path="/checkout" element={<Checkout user={user} setUser={setUser} cart={cart} navigate={navigate}/>}/>
       <Route path=":username" element={<Profile user={user} setUser={setUser} navigate={navigate}/>}/>
       <Route path='/search'  element={<Search user={user} setUser={setUser} navigate={navigate} setCart={setCart} cart={cart}/>}/>
       {/* <Route path="/cart" element={<Cart user={user} setUser={setUser} navigate={navigate} setCart={setCart} cart={cart} />}/> */}
       <Route path="/operations" element={<MyOperations user={user} setUser={setUser} navigate={navigate}/>}/>
-      <Route path="/operations" element={<Checkout user={user} setUser={setUser} cart={cart} navigate={navigate}/>}/>
+
     </Routes></div>
     <Cart user={user} setUser={setUser} navigate={navigate} setCart={setCart} cart={cart} cartOpen={cartOpen} setCartOpen={setCartOpen}/>
     </>
