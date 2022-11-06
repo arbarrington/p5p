@@ -8,6 +8,7 @@ import { Profile } from './pages/Profile';
 import { MyOperations } from './pages/MyOperations';
 import { Navbar } from './components/Navbar';
 import { Setup } from './pages/Setup';
+import { Checkout } from './pages/Checkout';
 import { Cart } from './components/Cart';
 import {CartProvider} from './context/CartContext'
 
@@ -59,6 +60,7 @@ function App() {
       <Route path='/search'  element={<Search user={user} setUser={setUser} navigate={navigate} setCart={setCart} cart={cart}/>}/>
       {/* <Route path="/cart" element={<Cart user={user} setUser={setUser} navigate={navigate} setCart={setCart} cart={cart} />}/> */}
       <Route path="/operations" element={<MyOperations user={user} setUser={setUser} navigate={navigate}/>}/>
+      <Route path="/operations" element={<Checkout user={user} setUser={setUser} cart={cart} navigate={navigate}/>}/>
     </Routes></div>
     <Cart user={user} setUser={setUser} navigate={navigate} setCart={setCart} cart={cart} cartOpen={cartOpen} setCartOpen={setCartOpen}/>
     </>

@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 export function MyOperations ({user, setUser, navigate}) {
   const [selectedFarm, setSelectedFarm] = useState(user.farms[0])
+  const [errorText, setErrorText] = useState("")
   
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false);
@@ -21,6 +22,9 @@ export function MyOperations ({user, setUser, navigate}) {
   const [banner, setBanner] = useState(null)
   const handleFarmEdit = ({target:{name, value}})=>setFarmInfo(farmInfo=>({...farmInfo, [name]: value}))
   
+  let errorNode = errorText.length===0 ? null : (<span className="centered" style={{color:"red", textAlign:"center"}}>{errorText}</span>)
+
+
   function patchFarm (e) {
     // e.preventDefault()
     const formData = new FormData()
@@ -32,11 +36,15 @@ export function MyOperations ({user, setUser, navigate}) {
       body: formData
       }).then(r=>{if (r.ok) {
         console.log('successfully patched farm', selectedFarm.id)
-        // navigate('/')
-        handleClose()
-      }})
+        handleClose()} 
+        else {r.json().then(({errors})=>{
+          setErrorText(errors)
+        })}
+      })
   }
 
+
+  console.log(errorNode)
   // TODO : ADD OPERATION
   return (<>
     <h2>Select an Operation to View its Products</h2>
@@ -75,8 +83,9 @@ export function MyOperations ({user, setUser, navigate}) {
               <label htmlFor="icon-input">Icon:</label>
               <input value={farmInfo.banner} name="banner" label="Photo of your operation" onChange={e=>setBanner(e.target.files[0])} type="file" accept="image/*" htmlFor="banner-input"/>
             </form>
+            {errorNode}
           </Modal.Body>
-
+          
           <Modal.Footer>
             <Button variant="secondary" className="bg-danger">Remove</Button>
             <Button variant="secondary" onClick={handleClose}>Close</Button>

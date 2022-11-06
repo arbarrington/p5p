@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  validates_presence_of :name, :price, :unit
+  
   belongs_to :farm
   has_one_attached :attachment
 
