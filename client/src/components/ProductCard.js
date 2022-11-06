@@ -3,7 +3,7 @@ import { ProductEditor } from './ProductEditor'
 import {Card, Button} from 'react-bootstrap'
 import { AddCartButton } from './AddCartButton'
 
-export function ProductCard ({product, user, setCart, cart, setSelectedProduct}) {
+export function ProductCard ({product, user, setCart, cart, setSelectedProduct, handleShow}) {
 
 
   function handleProductSelection() {
@@ -17,7 +17,9 @@ export function ProductCard ({product, user, setCart, cart, setSelectedProduct})
       <span>{product.description}</span>
       <span>${product.price} per {product.unit}</span>
       <span>{product.stocked? "Listed as Available" : "Listed as Unavailable"}</span>
-        
+      {user.producer?
+      <Button variant="primary" onClick={handleShow}>Edit/Remove Product</Button>
+      :<AddCartButton cart={cart} setCart={setCart} product={product} className="primary">Add To Cart</AddCartButton>}
     </Card>
   </>)
 }

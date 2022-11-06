@@ -42,10 +42,10 @@ export function ProductList ({farm, products, user, setCart, cart}) {
       <Row md={3} xs={1} lg={5} className="g-3">
         {displayedProducts.map((product)=> {return(
           <Col key={product.id}>
-            <ProductCard id={product.id} addNew={addNew} user={user} setSelectedProduct={setSelectedProduct} product={product}/>
+            <ProductCard id={product.id} addNew={addNew} cart={cart} setCart={setCart} user={user} setSelectedProduct={setSelectedProduct} product={product} handleShow={handleShow}/>
             {user.producer?
-            <Button variant="primary" onClick={handleShow}>Edit/Remove Product</Button>
-            :<AddCartButton cart={cart} setCart={setCart} product={product} className="primary">Add To Cart</AddCartButton>}
+            null
+            :null}
           </Col>
         )})}
       </Row>
