@@ -2,17 +2,20 @@ import {Button} from "react-bootstrap"
 import {useState} from 'react'
 
 export function AddCartButton ({product, cart, setCart}) {
-  const cartQuantity = cart.filter((item)=>{return item.product == product}).length
+  const [cartQuantity,setCartQuantity] = useState(0)
+  console.log('addbtn',cartQuantity)
+
+
 
   function increaseCartQuantity(product){
+    setCartQuantity((cartQuantity)=> cartQuantity+1)
     setCart(cart => {
-      if (cart.find(item => item.id === product.id) == null) {
+      if (cart.find(item => item.product.id === product.id) == null) {
         return [...cart, { product, quantity: 1 }]
       } else {
         return cart.map(item => {
-          if (item.id === product.id) {
-
-            return { ...item, quantity: item.quantity + 1 }
+          if (item.product.id === product.id) {
+            return {...item, quantity: item.quantity + 1 }
           } else {
             return item
           }
