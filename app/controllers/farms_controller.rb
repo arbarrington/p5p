@@ -9,7 +9,7 @@ class FarmsController < ApplicationController
   end
 
   def update
-    farm = Farm.find(params[:id])
+    farm = Farm.find_by(id: params[:id])
     farm.update(farm_params)
     render json: farm, status: :accepted
   end
@@ -17,6 +17,6 @@ class FarmsController < ApplicationController
   private
 
   def farm_params
-    params.permit(:name, :location, :banner, :website, :message)
+    params.permit(:name, :location, :banner, :website, :message, :user_id)
   end
 end

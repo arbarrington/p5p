@@ -13,7 +13,7 @@ export function Profile ({user, navigate, logOut=()=>{}}) {
     const formData = new FormData()
     for (const key in profileInfo) { formData.append(key, profileInfo[key]) }
     if (icon)   formData.append('icon', icon, icon.name)
-    console.log("patch profile triggered", profileInfo)
+    console.log("patch profile triggered", profileInfo.icon)
 
     fetch(`/users/${user.username}`, {
       method: "PATCH",

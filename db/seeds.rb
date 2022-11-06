@@ -37,7 +37,7 @@ farms = [
     location: "200 Main St., Denver, CO, 80202",
     message: "Hello! We are an independent, organic, and regenerative agricultural operation specialized in poultry, and offering a variety of seasonal produce.",
     website: "google.com",
-    banner: "",
+    
     user_id: 2
   },
   {
@@ -45,7 +45,7 @@ farms = [
     location: "201 Main St., Denver, CO, 80202",
     message: "Howdy neighbor! We hope you enjoy the fresh, natural, locally-grown and -raised produce that we have to offer. Come see us anytime!",
     website: "google.com",
-    banner: "",
+    
     user_id: 1
   },
   {
@@ -53,7 +53,7 @@ farms = [
     location: "202 Main St., Denver, CO, 80202",
     message: "We are a small regenerative operation here to offer you a delicious variety of vegetables, meats, spices, and condiments - enjoy!",
     website: "google.com",
-    banner: "",
+    
     user_id: 1
   },
   {
@@ -61,15 +61,15 @@ farms = [
     location: "203 Main St., Denver, CO, 80202",
     message: "We are known for our beef, honey and tomatoes... don't let that stop you from trying our other, lesser-known products!",
     website: "google.com",
-    banner: "",
-    user_id: 1
+    
+    user_id: 2
   },
   {
     name: "Harris Agricultural Supply Co.",
     location: "204 Main St., Denver, CO, 80202",
     message: "Enjoy any of our produce here on FM, or come on down and eat a farm-fresh meal at our restaurant! (No, we are not a petting zoo.)",
     website: "google.com",
-    banner: "",
+    
     user_id: 1
   }
 ]
@@ -81,7 +81,7 @@ products = [
     price: 2.5,
     unit: "lb.",
     description: "Organic Danvers",
-    attachment: "",
+    
     stocked: true
   },
   {
@@ -90,7 +90,7 @@ products = [
     price: 3,
     unit: "lb.",
     description: "Regeneratively sourced Nantes",
-    attachment: "",
+    
     stocked: false
   },
   {
@@ -99,7 +99,7 @@ products = [
     price: 8,
     unit: "lb.",
     description: "Never couped",
-    attachment: "",
+    
     stocked: true
   },
   {
@@ -108,7 +108,7 @@ products = [
     price: 6,
     unit: "dozen",
     description: "Large Brown",
-    attachment: "",
+    
     stocked: true
   },
   {
@@ -117,7 +117,7 @@ products = [
     price: 2.5,
     unit: "lb.",
     description: "Organic Danvers",
-    attachment: "",
+    
     stocked: true
   },
   {
@@ -126,7 +126,7 @@ products = [
     price: 1,
     unit: "head",
     description: "Batavia, organic",
-    attachment: "",
+    
     stocked: true
   },
   {
@@ -135,7 +135,7 @@ products = [
     price: 4,
     unit: "lb.",
     description: "Cherry",
-    attachment: "",
+    
     stocked: true
   },
   {
@@ -144,7 +144,7 @@ products = [
     price: 5,
     unit: "lb.",
     description: "Honeynut",
-    attachment: "",
+    
     stocked: true
   },
   {
@@ -153,7 +153,7 @@ products = [
     price: 2,
     unit: "oz.",
     description: "Kansas bees",
-    attachment: "",
+    
     stocked: false
   },
   {
@@ -162,7 +162,7 @@ products = [
     price: 4,
     unit: "unit",
     description: "Fresh, finely-ground",
-    attachment: "",
+    
     stocked: true
   },
   {
@@ -171,7 +171,7 @@ products = [
     price: 18,
     unit: "lb.",
     description: "Tenderloin",
-    attachment: "",
+    
     stocked: true
   },
   {
@@ -180,7 +180,7 @@ products = [
     price: 12,
     unit: "lb.",
     description: "Chuck",
-    attachment: "",
+    
     stocked: true
   },
   {
@@ -189,7 +189,7 @@ products = [
     price: 17,
     unit: "lb.",
     description: "Sirloin",
-    attachment: "",
+    
     stocked: false
   },
   {
@@ -198,7 +198,7 @@ products = [
     price: 6,
     unit: "gallon",
     description: "Grass-fed cows",
-    attachment: "",
+    
     stocked: true
   },
   {
@@ -207,7 +207,7 @@ products = [
     price: 3,
     unit: "lb.",
     description: "Organic poles",
-    attachment: "",
+    
     stocked: true
   },
   {
@@ -216,7 +216,7 @@ products = [
     price: 6,
     unit: "gallon",
     description: "Grass-fed cows",
-    attachment: "",
+    
     stocked: false
   },
 ]

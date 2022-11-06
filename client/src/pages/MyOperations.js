@@ -67,7 +67,7 @@ export function MyOperations ({user, setUser, navigate}) {
           </Modal.Header>
 
           <Modal.Body>
-            <form onSubmit={patchFarm}>
+            <form>
               <LabeledInput value={farmInfo.name} name="name" label="Farm Name" onChange={(e)=>handleFarmEdit(e)}/>
               <LabeledInput value={farmInfo.location} name="location" label="Where are you located?" onChange={(e)=>handleFarmEdit(e)}/>
               <LabeledInput value={farmInfo.message} name="message" label="Tell consumers about your operation:" onChange={(e)=>handleFarmEdit(e)}/>
@@ -80,7 +80,7 @@ export function MyOperations ({user, setUser, navigate}) {
           <Modal.Footer>
             <Button variant="secondary" className="bg-danger">Remove</Button>
             <Button variant="secondary" onClick={handleClose}>Close</Button>
-            <Button variant="primary" onClick={(e)=>patchFarm(e)}>Save Changes</Button>
+            <Button variant="primary" type="submit" onClick={(e)=>patchFarm(e)}>Save Changes</Button>
           </Modal.Footer>
 
       </Modal>

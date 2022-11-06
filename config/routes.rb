@@ -9,13 +9,14 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   
   resources :users, only: [:create, :index, :destroy]
-  resources :farms, only: [:create, :show, :index, :destroy, :update]
+  resources :farms, only: [:show, :index, :destroy]
   resources :products, only: [:create, :show, :index, :destroy, :update]
 
   patch 'users/:username', to: 'users#update'
   get 'users/:username', to: 'users#show'
 
-
+  patch 'farms/:id', to: 'farms#update'
+  post 'farms/', to: "farms#create"
 
   get '*path',
     to: 'fallback#index',
