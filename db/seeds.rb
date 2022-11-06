@@ -221,11 +221,13 @@ products = [
   },
 ]
 
+User.destroy_all
+User.create!(users)
 
-# User.create!(users)
-# Farm.destroy_all
-# Farm.create!(farms)
-# User.destroy_all
+Farm.destroy_all
+Farm.create!(farms)
+
+Product.destroy_all
 Product.create!(products)
 
 

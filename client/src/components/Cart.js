@@ -6,7 +6,6 @@ import { Button, Offcanvas, Stack } from "react-bootstrap"
 
 export function Cart ({cartOpen, setCartOpen}) {
 
-  console.log('cart open?', cartOpen)
   return(
     <Offcanvas show={cartOpen} onHide={()=>setCartOpen(false)} placement="end">
       <Stack gap={3}>

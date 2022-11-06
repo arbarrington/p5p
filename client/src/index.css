@@ -34,7 +34,7 @@ h1,h2,h3,h4,h5,p,span {
   object-fit: cover;
 }
 
-.modalOverlay {
+/* .modalOverlay {
   position: fixed;
   z-index: 100;
   top: 0;
@@ -54,4 +54,4 @@ h1,h2,h3,h4,h5,p,span {
   min-width: var(--chirp-width);
   padding: 1rem;
   border-radius: 1rem;
-}
+} */

@@ -1,10 +1,10 @@
 import {useState} from 'react'
 import { ProductEditor } from './ProductEditor'
-import {Card} from 'react-bootstrap'
+import {Card, Button} from 'react-bootstrap'
 import { AddCartButton } from './AddCartButton'
 
 export function ProductCard ({product, user, setCart, cart}) {
-  const [showEditorModal, setShowEditorModal] = useState(false)
+
 
 
 
@@ -16,11 +16,14 @@ export function ProductCard ({product, user, setCart, cart}) {
       <span>${product.price} per {product.unit}</span>
       <span>{product.stocked? "Listed as Available" : "Listed as Unavailable"}</span>
         {user.producer?
-        <button className="primary" onClick={()=>setShowEditorModal(true)}>Edit Product</button>
+        <Button className="primary" >Edit Product</Button>
         :<AddCartButton product={product} className="primary">Add To Cart</AddCartButton>}
     </Card>
-    {showEditorModal?<ProductEditor key={product.id} product={product} exit={()=>setShowEditorModal(false)}/>:null}
+    <ProductEditor  id={product.id} product={product} />
   </>)
 }
 
 // reload={reload} navigate={navigate}
+//   const [showEditorModal, setShowEditorModal] = useState(false)
+// onClick={()=>setShowEditorModal(true)}
+// exit={()=>setShowEditorModal(false)}

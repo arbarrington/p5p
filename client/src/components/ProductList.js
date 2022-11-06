@@ -19,7 +19,7 @@ export function ProductList ({farm, products, user, setCart, cart}) {
     <Row md={3} xs={1} lg={5} className="g-3">
     {selectedFarmProducts.map((product)=> {return(
       <Col key={product.id}>
-        <ProductCard id={product.id} addNew={addNew} user={user} className='row' setCart={setCart} cart={cart} product={product}/>
+        <ProductCard id={product.id} addNew={addNew} user={user}  setCart={setCart} cart={cart} product={product}/>
       </Col>
     )})}
     </Row>

@@ -41,8 +41,7 @@ export function Search ({user, setCart, cart}) {
                 selectedFarm={selectedFarm} 
                 setSelectedFarm={setSelectedFarm} 
                 setSelectedProducts={setSelectedProducts}
-                user={user} 
-                key={farm.id} 
+                user={user}  
                 farm={farm}/>
      </Col>
     )}
