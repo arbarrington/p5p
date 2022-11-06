@@ -2,15 +2,9 @@ import {Button} from "react-bootstrap"
 import {useState} from 'react'
 
 export function AddCartButton ({product, cart, setCart}) {
-
-
-  const cartQuantity = cart.reduce(
-    (quantity, product) => product.quantity + quantity,
-    0
-  )
+  const cartQuantity = cart.filter((item)=>{return item.product == product}).length
 
   function increaseCartQuantity(product){
-
     setCart(cart => {
       if (cart.find(item => item.id === product.id) == null) {
         return [...cart, { product, quantity: 1 }]
