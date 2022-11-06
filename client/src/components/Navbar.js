@@ -3,10 +3,10 @@ import { Link, useParams, NavLink } from "react-router-dom";
 import { useState } from 'react';
 import {Button, Nav, Container, Navbar as Navbarbs} from 'react-bootstrap'
 
-export function Navbar ({user, cartOpen, setCartOpen}) {
+export function Navbar ({user, cartOpen, setCartOpen,cart}) {
   const [path, setPath] = useState("")
   let {username} = useParams()
-  
+  let cartQuantity = cart.map((item)=>{return item.quantity}).reduce((partialSum, a)=>partialSum+a,0)
   // TODO : add a section for consumer analytics in the farmers navbar
   return (<>
     <Navbarbs sticky="top" className="bg-white shadow-sm mb-3">
@@ -33,8 +33,7 @@ export function Navbar ({user, cartOpen, setCartOpen}) {
         </Nav>
         
 
-        {user.producer?null:
-
+        {cartQuantity > 0 && (
           <Button
             onClick={()=>setCartOpen(true)}
             style={{ width: "3rem", height: "3rem", position: "relative" }}
@@ -61,17 +60,18 @@ export function Navbar ({user, cartOpen, setCartOpen}) {
                 transform: "translate(25%, 25%)",
               }}
             >
+              {cartQuantity}
             </div>
           </Button>
 
-            }
+            )}
       </Container>
     </Navbarbs>
     </>)
 }
 
 // TODO : reference https://github.com/WebDevSimplified/react-ts-shopping-cart/blob/main/src/components/Navbar.tsx
-        // {cartQuantity > 0 && (
-          // onClick={openCart}
-         // {cartQuantity}
-         // )}
+        // 
+          // 
+         // 
+         // 

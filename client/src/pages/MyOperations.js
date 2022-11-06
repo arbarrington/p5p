@@ -44,7 +44,7 @@ export function MyOperations ({user, setUser, navigate}) {
   }
 
 
-  console.log(errorNode)
+  // console.log(errorNode)
   // TODO : ADD OPERATION
   return (<>
     <h2>Select an Operation to View its Products</h2>

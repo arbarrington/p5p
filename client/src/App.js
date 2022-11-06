@@ -52,7 +52,7 @@ function App() {
   return (
     <>
 
-    <Navbar user={user} logout={()=>{setUser(null)}} cartOpen={cartOpen} setCartOpen={setCartOpen}/>
+    <Navbar user={user} logout={()=>{setUser(null)}} cartOpen={cartOpen} setCartOpen={setCartOpen} cart={cart}/>
     <div className="App"><Routes>
       <Route path='/' element={<Home user={user} setUser={setUser} navigate={navigate}/>}/>
       <Route path='/setup' element={<Setup user={user} navigate={navigate}/>}/>
