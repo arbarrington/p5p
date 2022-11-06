@@ -19,6 +19,10 @@ class ProductsController < ApplicationController
     render json: product, status: :accepted
   end
 
+  def destroy
+    Product.find_by(id: params[:id]).destroy
+  end
+
   private
 
   def product_params

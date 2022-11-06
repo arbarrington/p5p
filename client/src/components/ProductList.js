@@ -37,6 +37,13 @@ export function ProductList ({farm, products, user, setCart, cart}) {
       }})
   }
 
+  function deleteProduct(e) {
+    fetch(`/products/${selectedProduct.id}`, {method: "DELETE"}, {head: "No-Content"}).then(r=>{if (r.ok) {
+      console.log('successfully deleted product')
+      handleClose()
+    }})
+  }
+
   return (<>
     <div className="col">
       <Row md={3} xs={1} lg={5} className="g-3">
@@ -49,6 +56,7 @@ export function ProductList ({farm, products, user, setCart, cart}) {
           </Col>
         )})}
       </Row>
+      <div className="mt-5"></div>
       {user.producer?
       <Button onClick={()=>{setAddNew(true);handleShow()}}>Add Product for {farm.name}</Button>
       :null}
@@ -115,7 +123,7 @@ export function ProductList ({farm, products, user, setCart, cart}) {
       </Modal.Body>
 
       <Modal.Footer>
-        <Button variant="secondary" className="bg-danger">Remove</Button>
+        <Button variant="secondary" className="bg-danger" onClick={(e)=>deleteProduct(e)}>Remove</Button>
         <Button variant="secondary" onClick={handleClose}>Close</Button>
         <Button variant="primary" onClick={(e)=>patchProduct(e)}>Save Changes</Button>
       </Modal.Footer>

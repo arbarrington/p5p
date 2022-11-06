@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   patch 'farms/:id', to: 'farms#update'
   post 'farms/', to: "farms#create"
 
+  
+
   get '*path',
     to: 'fallback#index',
     constraints: ->(req) { !req.xhr? && req.format.html? }

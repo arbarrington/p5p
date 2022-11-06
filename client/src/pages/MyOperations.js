@@ -47,18 +47,20 @@ export function MyOperations ({user, setUser, navigate}) {
   // console.log(errorNode)
   // TODO : ADD OPERATION
   return (<>
+  <div className='mt-5'>
     <h2>Select an Operation to View its Products</h2>
     <Row>
       {user.farms.map((farm)=>{
         return(
           <Col>
             <FarmCard setSelectedFarm={setSelectedFarm} reload={fetchUserData} navigate={navigate} id={farm.id} farm={farm} user={user}/>  
-            <Button onClick={handleShow}>Edit/Remove Operation</Button>
+            <Button onClick={()=>{handleShow();setSelectedFarm(farm)}}>Edit/Remove Operation</Button>
           </Col>
         )
       })}
     </Row>
-    
+    </div>
+    <div className='spacer mb-5'></div>
     <div className='col'>
       <h3>Products - {selectedFarm.name}</h3>
       <ProductList farm={selectedFarm} user={user} products={user.products} className='row'/>
