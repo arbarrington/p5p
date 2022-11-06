@@ -8,7 +8,6 @@ export function AddCartButton ({product}) {
     console.log('adding to cart', product)
   }
 
-
   return (
     <div className="mt-auto">
           {cartQuantity === 0 ? (

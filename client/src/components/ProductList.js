@@ -2,7 +2,7 @@ import { ProductCard } from "./ProductCard"
 import { AddCartButton } from './AddCartButton'
 import { LabeledInput } from "./LabeledInput";
 import {useState} from 'react'
-import {Col, Row, Button, Modal} from 'react-bootstrap'
+import {Col, Row, Button, Modal, Form} from 'react-bootstrap'
 
 export function ProductList ({farm, products, user, setCart, cart}) {
   const [addNew, setAddNew] = useState(false)
@@ -54,28 +54,64 @@ export function ProductList ({farm, products, user, setCart, cart}) {
       :null}
     </div>
     
+    {user.producer?
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>{addNew?`Add Product for ${farm.name}`:`Edit ${selectedProduct.name}`} </Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
-        <form className="col" onSubmit={patchProduct}>
-        <LabeledInput value={productInfo.name} name="name" label="Product Name" onChange={(e)=>handleProductEdit(e)}/>
-        <LabeledInput value={productInfo.description} name="description" label="Product Description" onChange={(e)=>handleProductEdit(e)}/>
-        <LabeledInput value={productInfo.price} name="price" label="Product Price" onChange={(e)=>handleProductEdit(e)}/>
-        <LabeledInput value={productInfo.unit} name="unit" label="Product Unit" onChange={(e)=>handleProductEdit(e)}/>
+        <Form className="col" onSubmit={patchProduct}>
+          <Form.Group className="mb-3" controlId="formName">
+            <Form.Label>Name</Form.Label>
+            <Form.Control type="text" placeholder="Enter product name" value={productInfo.name} name="name" onChange={(e)=>handleProductEdit(e)}/>
+            <Form.Text className="text-muted">
+              Choose something generic like "Beef" to help consumers find your product.
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formDescription">
+            <Form.Label>Description</Form.Label>
+            <Form.Control type="text" placeholder="Enter product description" value={productInfo.description} name="description" onChange={(e)=>handleProductEdit(e)}/>
+            <Form.Text className="text-muted">
+              Ex. "Sirloin", "Ribeye", "Chuck"
+            </Form.Text>
+          </Form.Group>
+
+          <Row>
+            <Col>
+              <Form.Group className="mb-3" controlId="formPrice">
+                <Form.Label>Price</Form.Label>
+                <Form.Control type="integer" placeholder="Enter unit price" value={productInfo.price} name="price" onChange={(e)=>handleProductEdit(e)}/>
+                <Form.Text className="text-muted">
+                  Ex. "7" means $7/unit
+                </Form.Text>
+              </Form.Group>
+            </Col>per
+            <Col>
+              <Form.Group className="mb-3" controlId="formUnit">
+                <Form.Label>Unit</Form.Label>
+                <Form.Control type="text" placeholder="Enter units" value={productInfo.unit} name="unit" onChange={(e)=>handleProductEdit(e)}/>
+                <Form.Text className="text-muted">
+                  Ex. "pound", "gallon", "dozen"
+                </Form.Text>
+              </Form.Group>
+            </Col>
+          </Row>
+
+
         <div>Is the product available?
         <select value={productInfo.stocked} name="stocked" label="Available?" onChange={(e)=>handleProductEdit(e)}>
           <option value={true} label="Yes, available now"></option>
           <option value={false} label="Not available now"></option>
         </select>
         </div>
+        <div className="spacer"></div>
         <div>
         <label htmlFor="product-input">Product Image:</label>
         <input value={productInfo.attachment} name="banner" label="Photo of your product" onChange={e=>setAttachment(e.target.files[0])} type="file" accept="image/*" htmlFor="product-input"/>
         </div>
-        </form>
+        </Form>
       </Modal.Body>
 
       <Modal.Footer>
@@ -84,6 +120,12 @@ export function ProductList ({farm, products, user, setCart, cart}) {
       </Modal.Footer>
 
     </Modal>
+    :null}
 
   </>)
 }
+
+//         <LabeledInput value={productInfo.name} name="name" label="Product Name" onChange={(e)=>handleProductEdit(e)}/>
+//         <LabeledInput value={productInfo.description} name="description" label="Product Description" onChange={(e)=>handleProductEdit(e)}/>
+{/* <LabeledInput value={productInfo.price} name="price" label="Product Price" onChange={(e)=>handleProductEdit(e)}/>
+<LabeledInput value={productInfo.unit} name="unit" label="Product Unit" onChange={(e)=>handleProductEdit(e)}/> */}
