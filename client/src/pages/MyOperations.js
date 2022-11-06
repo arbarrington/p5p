@@ -39,7 +39,7 @@ export function MyOperations ({user, setUser, navigate}) {
 
   // TODO : ADD OPERATION
   return (<>
-    <h2>Select an Operation</h2>
+    <h2>Select an Operation to View its Products</h2>
     <Row>
       {user.farms.map((farm)=>{
         return(
@@ -78,6 +78,7 @@ export function MyOperations ({user, setUser, navigate}) {
           </Modal.Body>
 
           <Modal.Footer>
+            <Button variant="secondary" className="bg-danger">Remove</Button>
             <Button variant="secondary" onClick={handleClose}>Close</Button>
             <Button variant="primary" onClick={(e)=>patchFarm(e)}>Save Changes</Button>
           </Modal.Footer>
@@ -85,3 +86,5 @@ export function MyOperations ({user, setUser, navigate}) {
       </Modal>
   </>)
 }
+
+// TODO : make the farm editor use a bootstrap form

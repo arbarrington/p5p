@@ -1,11 +1,25 @@
 import {Button} from "react-bootstrap"
 import { useCart } from "../contexts/CartContext"
 
-export function AddCartButton ({product}) {
+export function AddCartButton ({product, cart, setCart}) {
   const cartQuantity = 0
+  let id=product.id
 
-  function handleAddCart() {
-    console.log('adding to cart', product)
+  function handleAddCart(id) {
+    console.log('add cart', product)
+    setCart(currItems => {
+      if (currItems.find(item => item.id === id) == null) {
+        return [...currItems, { id, quantity: 1 }]
+      } else {
+        return currItems.map(item => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity + 1 }
+          } else {
+            return item
+          }
+        })
+      }
+    }) 
   }
 
   return (

@@ -44,8 +44,8 @@ export function ProductList ({farm, products, user, setCart, cart}) {
           <Col key={product.id}>
             <ProductCard id={product.id} addNew={addNew} user={user} setSelectedProduct={setSelectedProduct} product={product}/>
             {user.producer?
-            <Button variant="primary" onClick={handleShow}>Edit Product</Button>
-            :<AddCartButton product={product} className="primary">Add To Cart</AddCartButton>}
+            <Button variant="primary" onClick={handleShow}>Edit/Remove Product</Button>
+            :<AddCartButton cart={cart} setCart={setCart} product={product} className="primary">Add To Cart</AddCartButton>}
           </Col>
         )})}
       </Row>
@@ -115,6 +115,7 @@ export function ProductList ({farm, products, user, setCart, cart}) {
       </Modal.Body>
 
       <Modal.Footer>
+        <Button variant="secondary" className="bg-danger">Remove</Button>
         <Button variant="secondary" onClick={handleClose}>Close</Button>
         <Button variant="primary" onClick={(e)=>patchProduct(e)}>Save Changes</Button>
       </Modal.Footer>
@@ -124,6 +125,8 @@ export function ProductList ({farm, products, user, setCart, cart}) {
 
   </>)
 }
+
+//TODO : ask follow up questions when marking products unavailable, deleting products, or switching between consumer/producer account
 
 //         <LabeledInput value={productInfo.name} name="name" label="Product Name" onChange={(e)=>handleProductEdit(e)}/>
 //         <LabeledInput value={productInfo.description} name="description" label="Product Description" onChange={(e)=>handleProductEdit(e)}/>

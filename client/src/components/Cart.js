@@ -4,14 +4,14 @@
 // TODO : farms can offer seasonal deals
 import { Button, Offcanvas, Stack } from "react-bootstrap"
 
-export function Cart ({cartOpen, setCartOpen}) {
+export function Cart ({cartOpen, setCartOpen, cart, setCart}) {
 
   return(
     <Offcanvas show={cartOpen} onHide={()=>setCartOpen(false)} placement="end">
       <Stack gap={3}>
-      <h1>item1</h1>
-      <h1>item2</h1>
-      <h1>item3</h1>
+      {cart.map((item)=>{
+        <p>{item.name}</p>
+      })}
       <Button>Checkout</Button>
       </Stack>
     </Offcanvas>
