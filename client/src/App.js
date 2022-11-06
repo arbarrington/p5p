@@ -9,7 +9,7 @@ import { MyOperations } from './pages/MyOperations';
 import { Navbar } from './components/Navbar';
 import { Setup } from './pages/Setup';
 import { Cart } from './components/Cart';
-import {CartProvider} from './contexts/CartContext'
+import {CartProvider} from './context/CartContext'
 
 function App() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))

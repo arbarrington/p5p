@@ -1,11 +1,17 @@
 import { useState,useEffect } from "react"
 import { Button, Stack } from "react-bootstrap"
 
-export function CartItem ({product, quantity, setTotal}) {
+export function CartItem ({product, quantity, setTotal, setCart}) {
   // console.log('item',product, quantity)
-  
-  return (
+  function removeFromCart(product){
+    // setCartQuantity(0)
+    setCart(cart => {
+      return cart.filter((item)=>item.product.id !== product.id)
+    })
+  }
 
+
+  return (
     <Stack direction="horizontal" gap={2} className="d-flex align-items-center">
     <img
       src={product.attachment}
@@ -28,7 +34,7 @@ export function CartItem ({product, quantity, setTotal}) {
     <Button
       variant="outline-danger"
       size="sm"
-      onClick={() => console.log('fix the remove button', product.id)}
+      onClick={() => removeFromCart(product)}
     >
       &times;
     </Button>

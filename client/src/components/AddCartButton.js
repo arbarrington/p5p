@@ -5,8 +5,6 @@ export function AddCartButton ({product, cart, setCart}) {
   const [cartQuantity,setCartQuantity] = useState(0)
   console.log('addbtn',cartQuantity)
 
-
-
   function increaseCartQuantity(product){
     setCartQuantity((cartQuantity)=> cartQuantity+1)
     setCart(cart => {
@@ -24,11 +22,35 @@ export function AddCartButton ({product, cart, setCart}) {
     })
   }
 
+  function decreaseCartQuantity(product){
+    setCartQuantity((cartQuantity)=> cartQuantity-1)
+    setCart(cart => {
+      if (cart.find(item => item.product.id === product.id)?.quantity === 1) {
+        return cart.filter(item => item.product.id !== product.id)
+      } else {
+        return cart.map(item => {
+          if (item.product.id === product.id) {
+            return {...item, quantity: item.quantity - 1 }
+          } else {
+            return item
+          }
+        })
+      }
+    })
+  }
+
+  function removeFromCart(product){
+    setCartQuantity(0)
+    setCart(cart => {
+      return cart.filter((item)=>item.product.id !== product.id)
+    })
+  }
+
+
   return (
     <div className="mt-auto">
           {cartQuantity === 0 ? (
             <Button className="w-100"
- 
               onClick={() => increaseCartQuantity(product)}
               >
               + Add To Cart
@@ -41,8 +63,8 @@ export function AddCartButton ({product, cart, setCart}) {
                 className="d-flex align-items-center justify-content-center"
                 style={{ gap: ".5rem" }}>
                 <Button
-                  onClick={()=>console.log('decrease clicked')} 
-                  // onClick={() => decreaseCartQuantity(id)}
+                  // onClick={()=>console.log('decrease clicked')} 
+                  onClick={() => decreaseCartQuantity(product)}
                 >-</Button>
                 <div>
                   <span className="fs-3">{cartQuantity}</span>{product.unit} in cart
@@ -53,8 +75,8 @@ export function AddCartButton ({product, cart, setCart}) {
                 >+</Button>
               </div>
               <Button
-                onClick={()=>console.log('remove clicked')} 
-                // onClick={() => removeFromCart(id)}
+                // onClick={()=>console.log('remove clicked')} 
+                onClick={() => removeFromCart(product)}
                 variant="danger"
                 size="sm">
                 Remove
