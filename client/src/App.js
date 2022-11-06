@@ -22,12 +22,22 @@ function App() {
   useEffect(() => { localStorage.setItem("user", JSON.stringify(user));
   }, [user]);
   // auto-login (incase cookie expired or something
+
+  useEffect(() => { localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+// auto-login (incase cookie expired or something
+
+
+
   useEffect(() => {fetch("/me").then((r) => {
     if (r.ok) { r.json().then((user) => setUser(user)); }
     else { setUser(null) }
   });}, []);
 
   // handleAddCart()
+  // TODO : import {Container, Navbar as NavbarBs} from "react-boostrap"
+// TODO : place container inside navbarbs and give navbarbs class bg-white shadow-sm mb-3
+// TODO :     <CartProvider>
 
   if (!user) {
     return <Routes>
@@ -37,9 +47,7 @@ function App() {
       <Route path="*" element={<LoginSignup isLogin={false} user={user} setUser={setUser} />} />
     </Routes>
   }
-// TODO : import {Container, Navbar as NavbarBs} from "react-boostrap"
-// TODO : place container inside navbarbs and give navbarbs class bg-white shadow-sm mb-3
-// TODO :     <CartProvider>
+
   return (
     <>
 

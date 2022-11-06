@@ -1,16 +1,38 @@
 import {Button} from "react-bootstrap"
-import { useCart } from "../contexts/CartContext"
+import {useState} from 'react'
 
 export function AddCartButton ({product, cart, setCart}) {
-  const cartQuantity = 0
 
+
+  const cartQuantity = cart.reduce(
+    (quantity, product) => product.quantity + quantity,
+    0
+  )
+
+  function increaseCartQuantity(product){
+
+    setCart(cart => {
+      if (cart.find(item => item.id === product.id) == null) {
+        return [...cart, { product, quantity: 1 }]
+      } else {
+        return cart.map(item => {
+          if (item.id === product.id) {
+
+            return { ...item, quantity: item.quantity + 1 }
+          } else {
+            return item
+          }
+        })
+      }
+    })
+  }
 
   return (
     <div className="mt-auto">
           {cartQuantity === 0 ? (
             <Button className="w-100"
-              onClick={()=>console.log('add to cart', product)} 
-              // onClick={() => increaseCartQuantity(id)}
+ 
+              onClick={() => increaseCartQuantity(product)}
               >
               + Add To Cart
             </Button>
@@ -29,8 +51,8 @@ export function AddCartButton ({product, cart, setCart}) {
                   <span className="fs-3">{cartQuantity}</span>{product.unit} in cart
                 </div>
                 <Button 
-                  onClick={()=>console.log('increase clicked')} 
-                  // onClick={() => increaseCartQuantity(id)}
+                  // onClick={()=>console.log('increase clicked')} 
+                  onClick={() => increaseCartQuantity(product)}
                 >+</Button>
               </div>
               <Button

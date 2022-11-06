@@ -1,18 +1,19 @@
+import { useState,useEffect } from "react"
 import { Button, Stack } from "react-bootstrap"
 
-export function CartItem (product) {
-  let fakeProd = {attachment:"",description:"Never couped",farm_id: 1,id: 3,name:"Chicken",price:8,stocked:true,unit:"lb."}
-  if (fakeProd == null) return null
+export function CartItem ({product, quantity}) {
+  console.log('item',product, quantity)
 
   return (
+
     <Stack direction="horizontal" gap={2} className="d-flex align-items-center">
     <img
-      src={item.imgUrl}
+      src={product.attachment}
       style={{ width: "125px", height: "75px", objectFit: "cover" }}
     />
     <div className="me-auto">
       <div>
-        {item.name}{" "}
+        {product.name}{" "}
         {quantity > 1 && (
           <span className="text-muted" style={{ fontSize: ".65rem" }}>
             x{quantity}
@@ -20,14 +21,14 @@ export function CartItem (product) {
         )}
       </div>
       <div className="text-muted" style={{ fontSize: ".75rem" }}>
-        {formatCurrency(item.price)}
+        {product.price}
       </div>
     </div>
-    <div> {formatCurrency(item.price * quantity)}</div>
+    <div> {product.price * quantity}</div>
     <Button
       variant="outline-danger"
       size="sm"
-      onClick={() => removeFromCart(item.id)}
+      onClick={() => console.log('fix the remove button', product.id)}
     >
       &times;
     </Button>
