@@ -19,7 +19,6 @@ export function ProductCard ({product, user, setCart, cart, setSelectedProduct})
       <span>{product.stocked? "Listed as Available" : "Listed as Unavailable"}</span>
         
     </Card>
-    <ProductEditor  id={product.id} product={product} />
   </>)
 }
 
