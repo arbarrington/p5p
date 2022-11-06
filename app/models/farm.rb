@@ -2,7 +2,7 @@ class Farm < ApplicationRecord
   validates :name, presence: true
   validates :location, presence: true
   belongs_to :user
-  has_many :products
+  has_many :products, dependent: :destroy
   has_one_attached :banner
   
   has_many_attached :files

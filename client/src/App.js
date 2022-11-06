@@ -18,6 +18,9 @@ function App() {
   const [cartOpen, setCartOpen] = useState(false)
   const navigate = useNavigate()
   let {username} = useParams();
+  const [lat, setLat] = useState(null);
+  const [lon, setLon] = useState(null);
+  const [status, setStatus] = useState(null);
   
 
   useEffect(() => { localStorage.setItem("user", JSON.stringify(user));

@@ -14,6 +14,10 @@ class FarmsController < ApplicationController
     render json: farm, status: :accepted
   end
 
+  def destroy
+    Farm.find_by(id: params[:id]).destroy
+  end
+
   private
 
   def farm_params

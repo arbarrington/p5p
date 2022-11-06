@@ -43,6 +43,12 @@ export function MyOperations ({user, setUser, navigate}) {
       })
   }
 
+  function deleteFarm(e) {
+    fetch(`/farms/${selectedFarm.id}`, {method: "DELETE"}).then(r=>{if (r.ok) {
+      console.log('successfully deleted farm')
+      handleClose()
+    }})
+  }
 
   // console.log(errorNode)
   // TODO : ADD OPERATION
@@ -89,7 +95,7 @@ export function MyOperations ({user, setUser, navigate}) {
           </Modal.Body>
           
           <Modal.Footer>
-            <Button variant="secondary" className="bg-danger">Remove</Button>
+            <Button variant="secondary" className="bg-danger" onClick={(e)=>deleteFarm(e)}>Remove</Button>
             <Button variant="secondary" onClick={handleClose}>Close</Button>
             <Button variant="primary" type="submit" onClick={(e)=>patchFarm(e)}>Save Changes</Button>
           </Modal.Footer>
