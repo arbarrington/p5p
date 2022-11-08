@@ -23,6 +23,8 @@ export function FarmCard ({id, navigate, reload, farm, setSelectedFarm, user, se
   //   myInput.focus()
   // })
 
+  // route to farm website window.location.assign
+
   return (<>
     <Card className="h-100 d-flex flex-column" key={id} onClick={()=>{handleFarmSelection()}}>
       <Card.Title className="justify-content-between align-items-baseline mb-2">{farm.name}</Card.Title>

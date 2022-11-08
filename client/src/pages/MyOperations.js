@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 export function MyOperations ({user, setUser, navigate}) {
   const [selectedFarm, setSelectedFarm] = useState(user.farms[0])
   const [errorText, setErrorText] = useState("")
+  const [addingFarm, setAddingFarm] = useState(false)
   
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false);
@@ -24,18 +25,17 @@ export function MyOperations ({user, setUser, navigate}) {
   
   let errorNode = errorText.length===0 ? null : (<span className="centered" style={{color:"red", textAlign:"center"}}>{errorText}</span>)
 
-
   function patchFarm (e) {
     // e.preventDefault()
     const formData = new FormData()
     for (const key in farmInfo) { formData.append(key, farmInfo[key]) }
     if (banner) formData.append('banner', banner, banner.name)
     // console.log("patch farm triggered", farmInfo)
-    fetch(`/farms/${selectedFarm.id}`, {
-      method: "PATCH",
+    fetch(addingFarm?"/farms":`/farms/${selectedFarm.id}`, {
+      method: addingFarm?"POST":"PATCH",
       body: formData
       }).then(r=>{if (r.ok) {
-        console.log('successfully patched farm', selectedFarm.id)
+        console.log('successfully patched/posted farm', selectedFarm.id)
         handleClose()} 
         else {r.json().then(({errors})=>{
           setErrorText(errors)
@@ -67,15 +67,17 @@ export function MyOperations ({user, setUser, navigate}) {
     </Row>
     </div>
     <div className='spacer mb-5'></div>
+    {(user.farms === [])?
     <div className='col'>
       <h3>Products - {selectedFarm.name}</h3>
       <ProductList farm={selectedFarm} user={user} products={user.products} className='row'/>
     </div>
+    :null}
 
     {/* {user.products.filter((product)=>{
       (product.farm_id == selectedFarm.id)
     return <p>{product.name}</p> */}
-
+    {(user.farms === [])?
       <Modal show={show} onHide={handleClose}>
           
           <Modal.Header closeButton>
@@ -101,6 +103,7 @@ export function MyOperations ({user, setUser, navigate}) {
           </Modal.Footer>
 
       </Modal>
+    :null}
   </>)
 }
 
