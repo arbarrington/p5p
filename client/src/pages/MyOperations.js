@@ -54,7 +54,7 @@ export function MyOperations ({user, setUser, navigate}) {
   // TODO : ADD OPERATION
   return (<>
   <div className='mt-5'>
-    <h2>Select an Operation to View its Products</h2>
+    {user.farms===[]?<h2>Select an Operation to View its Products</h2>:<Button onClick={()=>{setAddingFarm(true);handleShow()}}>Add a Farm and Products</Button>}
     <Row>
       {user.farms.map((farm)=>{
         return(
@@ -74,14 +74,11 @@ export function MyOperations ({user, setUser, navigate}) {
     </div>
     :null}
 
-    {/* {user.products.filter((product)=>{
-      (product.farm_id == selectedFarm.id)
-    return <p>{product.name}</p> */}
-    {(user.farms === [])?
+    {((user.farms === []) || addingFarm) &&
       <Modal show={show} onHide={handleClose}>
           
           <Modal.Header closeButton>
-            <Modal.Title>Edit {selectedFarm.name}</Modal.Title>
+            <Modal.Title>{addingFarm? `Add a New Operation`: `Edit ${selectedFarm.name}`}</Modal.Title>
           </Modal.Header>
 
           <Modal.Body>
@@ -103,7 +100,7 @@ export function MyOperations ({user, setUser, navigate}) {
           </Modal.Footer>
 
       </Modal>
-    :null}
+    }
   </>)
 }
 
