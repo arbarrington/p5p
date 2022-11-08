@@ -24,12 +24,13 @@ export function MyOperations ({user, setUser, navigate}) {
   const handleFarmEdit = ({target:{name, value}})=>setFarmInfo(farmInfo=>({...farmInfo, [name]: value}))
   
   let errorNode = errorText.length===0 ? null : (<span className="centered" style={{color:"red", textAlign:"center"}}>{errorText}</span>)
-
+  console.log('my ops', user)
   function patchFarm (e) {
     // e.preventDefault()
     const formData = new FormData()
     for (const key in farmInfo) { formData.append(key, farmInfo[key]) }
     if (banner) formData.append('banner', banner, banner.name)
+    if (addingFarm) formData.append('user_id', user.id)
     // console.log("patch farm triggered", farmInfo)
     fetch(addingFarm?"/farms":`/farms/${selectedFarm.id}`, {
       method: addingFarm?"POST":"PATCH",
