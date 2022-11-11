@@ -46,6 +46,7 @@ export function AddCartButton ({product, cart, setCart}) {
     })
   }
 
+ 
 
   return (
     <div className="mt-auto">
