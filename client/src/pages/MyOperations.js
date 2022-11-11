@@ -37,7 +37,8 @@ export function MyOperations ({user, setUser, navigate}) {
       body: formData
       }).then(r=>{if (r.ok) {
         console.log('successfully patched/posted farm', selectedFarm.id)
-        handleClose()} 
+        handleClose()
+        setAddingFarm(false)} 
         else {r.json().then(({errors})=>{
           setErrorText(errors)
         })}
@@ -51,11 +52,11 @@ export function MyOperations ({user, setUser, navigate}) {
     }})
   }
 
-  // console.log(errorNode)
+  console.log(user.farms)
   // TODO : ADD OPERATION
   return (<>
   <div className='mt-5'>
-    {user.farms===[]?<h2>Select an Operation to View its Products</h2>:<Button onClick={()=>{setAddingFarm(true);handleShow()}}>Add a Farm and Products</Button>}
+    <h2>Select an Operation to View its Products</h2>
     <Row>
       {user.farms.map((farm)=>{
         return(
@@ -66,14 +67,15 @@ export function MyOperations ({user, setUser, navigate}) {
         )
       })}
     </Row>
+    <Button onClick={()=>{setAddingFarm(true);handleShow()}}>Add New Operation</Button>
     </div>
     <div className='spacer mb-5'></div>
-    {(user.farms === [])?
+    
     <div className='col'>
       <h3>Products - {selectedFarm.name}</h3>
       <ProductList farm={selectedFarm} user={user} products={user.products} className='row'/>
     </div>
-    :null}
+    
 
     {((user.farms === []) || addingFarm) &&
       <Modal show={show} onHide={handleClose}>

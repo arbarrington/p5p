@@ -21,6 +21,8 @@ function App() {
   const [lat, setLat] = useState(null);
   const [lon, setLon] = useState(null);
   const [status, setStatus] = useState(null);
+
+  // TODO : did you parse into floats
   
 
   useEffect(() => { localStorage.setItem("user", JSON.stringify(user));

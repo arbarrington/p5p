@@ -1,4 +1,5 @@
 import {Col, Row} from 'react-bootstrap'
+import {AddressInput} from '../components/AddressInput'
 
 export function Checkout ({cart}) {
   console.log('checkout', cart[0])
@@ -16,5 +17,8 @@ export function Checkout ({cart}) {
      <Col>${item.product.price}</Col>
      <Col>${item.quantity * item.product.price}</Col>
      </Row>})}
+
+  <h1 className='mt-5 mb-0'>Enter Shipping Address</h1>
+      <AddressInput className='mt-0'></AddressInput>
  </> )
 }

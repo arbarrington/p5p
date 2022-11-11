@@ -5,8 +5,8 @@ class Farm < ApplicationRecord
   has_many :products, dependent: :destroy
   has_one_attached :banner
   
-  has_many_attached :files
-  accepts_nested_attributes_for :products
+  # has_many_attached :files
+  # accepts_nested_attributes_for :products
 
   def banner_url
     return Rails.application.routes.url_helpers.url_for(banner) if banner.attached?
