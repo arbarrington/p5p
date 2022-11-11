@@ -13,9 +13,9 @@ export function Home ({user}) {
       <img className="icon" src={user.icon} alt="User Icon"/>
       <h3>{user.bio}</h3>
       <h1 className="">My Orders and Subscriptions</h1>
-      {orders.map((order)=>{
-        return <h2>${order.price}</h2>
-      })}
+      {orders.map((order)=>{return <>
+        <h2>${order.price}---{order.delivery_address}</h2>
+        </>})}
       {!user.producer?
         <h1>Favorite Producers</h1>
       :<h1>Consumer Analytics</h1>}

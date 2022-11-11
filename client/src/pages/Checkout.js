@@ -2,12 +2,18 @@ import {Col, Row} from 'react-bootstrap'
 import { MDBAccordion, MDBAccordionItem, MDBBtn, MDBCard, MDBCardBody, MDBCardFooter, MDBCardHeader, MDBCardImage, MDBCheckbox, MDBCol, MDBContainer, MDBInput, MDBListGroup, MDBListGroupItem, MDBRow, MDBTextArea, MDBTypography } from 'mdb-react-ui-kit';
 
 
-export function Checkout ({cart}) {
+export function Checkout ({cart, navigate}) {
 
   let taxfee = 1.2
 
   function submitOrder () {
-    
+    let formData={}
+    fetch(`/orders`, {
+      method: "POST",
+      body: formData
+      }).then(r=>{if (r.ok) {
+        navigate('/') 
+      }})
   }
 
   return (<>
