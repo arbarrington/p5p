@@ -19,6 +19,6 @@ export function Checkout ({cart}) {
      </Row>})}
 
   <h1 className='mt-5 mb-0'>Enter Shipping Address</h1>
-      <AddressInput className='mt-0'></AddressInput>
+      <AddressInput className='mt-0' cart={cart}></AddressInput>
  </> )
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { MDBAccordion, MDBAccordionItem, MDBBtn, MDBCard, MDBCardBody, MDBCardFooter, MDBCardHeader, MDBCardImage, MDBCheckbox, MDBCol, MDBContainer, MDBInput, MDBListGroup, MDBListGroupItem, MDBRow, MDBTextArea, MDBTypography } from 'mdb-react-ui-kit';
 
-export function AddressInput() {
+export function AddressInput({cart}) {
   return (
     <MDBContainer className="py-2" style={{maxWidth: '1100px'}}>
       <section>
@@ -61,23 +61,25 @@ export function AddressInput() {
                   1 item <span className="float-end mt-1" style={{ fontSize: '13px' }}>Edit</span>
                 </MDBTypography>
               </MDBCardHeader>
+              {cart.map((item)=>{return(
               <MDBCardBody>
                 <MDBRow>
                   <MDBCol md="4">
-                    <MDBCardImage src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/12a.webp"
+                    <MDBCardImage src={item.product.attachment}
                       className="rounded-3" style={{ width: '100px' }} alt="Blue Jeans Jacket" />
                   </MDBCol>
                   <MDBCol md="6" className="ms-3">
-                    <span className="mb-0 text-price">$35.00</span>
-                    <p className="mb-0 text-descriptions">Denim jacket </p>
-                    <span className="text-descriptions fw-bold">Black</span> <span
-                      className="text-descriptions fw-bold">UK 8</span>
+                    <span className="mb-0 text-price">{item.product.price}</span>
+                    <p className="mb-0 text-descriptions">{item.product.name}</p>
+                    <span className="text-descriptions fw-bold">{item.product.description}</span> <span
+                      className="text-descriptions fw-bold">{item.product.unit}</span>
                     <p className="text-descriptions mt-0">
-                      Qty:<span className="text-descriptions fw-bold">1</span>
+                      Qty:<span className="text-descriptions fw-bold">{item.quantity}</span>
                     </p>
                   </MDBCol>
                 </MDBRow>
               </MDBCardBody>
+              )})}
               <MDBCardFooter className="mt-4">
                 <MDBListGroup flush>
                   <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 pb-0 text-muted">
