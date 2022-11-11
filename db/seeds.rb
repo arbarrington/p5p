@@ -221,14 +221,34 @@ products = [
   },
 ]
 
-User.destroy_all
-User.create!(users)
+orders = [
+  user_id: 3,
+  delivery_address: "2905 Inca St., Denver, CO, 80202",
+  cart: [
+    {product: {
+      farm_id: 3,
+      name: "Beef",
+      price: 18,
+      unit: "lb.",
+      description: "Tenderloin",
+      id: 11,
+      stocked: true
+    },
+    quantity: 3}
+  ],
+  price: 54
+]
 
-Farm.destroy_all
-Farm.create!(farms)
+# User.destroy_all
+# User.create!(users)
 
-Product.destroy_all
-Product.create!(products)
+# Farm.destroy_all
+# Farm.create!(farms)
+
+# Product.destroy_all
+# Product.create!(products)
+
+Order.create!(orders)
 
 
 puts "Done!"
