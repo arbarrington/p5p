@@ -9,6 +9,7 @@ class User < ApplicationRecord
   
   has_many :farms
   has_many :products, through: :farms
+  has_many :orders
   accepts_nested_attributes_for :products
   accepts_nested_attributes_for :farms
   def icon_url

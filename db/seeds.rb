@@ -224,29 +224,18 @@ products = [
 orders = [
   user_id: 3,
   delivery_address: "2905 Inca St., Denver, CO, 80202",
-  cart: [
-    {product: {
-      farm_id: 3,
-      name: "Beef",
-      price: 18,
-      unit: "lb.",
-      description: "Tenderloin",
-      id: 11,
-      stocked: true
-    },
-    quantity: 3}
-  ],
+  cart: "",
   price: 54
 ]
 
-# User.destroy_all
-# User.create!(users)
+User.destroy_all
+User.create!(users)
 
-# Farm.destroy_all
-# Farm.create!(farms)
+Farm.destroy_all
+Farm.create!(farms)
 
-# Product.destroy_all
-# Product.create!(products)
+Product.destroy_all
+Product.create!(products)
 
 Order.create!(orders)
 
