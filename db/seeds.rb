@@ -237,7 +237,7 @@ Farm.create!(farms)
 Product.destroy_all
 Product.create!(products)
 
-Order.create!(orders)
+# Order.create!(orders)
 
 
 puts "Done!"

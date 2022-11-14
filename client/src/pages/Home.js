@@ -11,7 +11,9 @@ export function Home ({user}) {
   .then(r=>r.json()).then(data=>{ setOrdersOut(data) })
 
   useEffect(() => { fetchUserData(); fetchOrderData() }, [user.username])
-  console.log(ordersIn)
+  
+  const myOrders = ordersOut.filter((order)=>{})
+  console.log(ordersOut[0].cart)
 
 
 
@@ -22,11 +24,13 @@ export function Home ({user}) {
       <img className="icon" src={user.icon} alt="User Icon"/>
       <h3>{user.bio}</h3>
       <h1 className="">My Orders and Subscriptions</h1>
-      {ordersIn.map((order)=>{return <>
-        <h2>${order.price}---{order.delivery_address}</h2>
-        </>})}
-      {ordersOut.map((order)=>{return <>
+      {user.producer?
+        ordersOut.map((order)=>{return <>
         <h2>{order.first_name}</h2>
+        </>})
+        :
+        ordersIn.map((order)=>{return <>
+        <h2>${order.price}---{order.delivery_address}</h2>
         </>})}
       {!user.producer?
         <h1>Favorite Producers</h1>
