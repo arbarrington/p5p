@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   patch 'farms/:id', to: 'farms#update'
   post 'farms/', to: "farms#create"
 
-  
+  post '/orders', to: "orders#create"
 
   get '*path',
     to: 'fallback#index',

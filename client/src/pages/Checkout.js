@@ -1,18 +1,28 @@
 import {Col, Row} from 'react-bootstrap'
 import { MDBAccordion, MDBAccordionItem, MDBBtn, MDBCard, MDBCardBody, MDBCardFooter, MDBCardHeader, MDBCardImage, MDBCheckbox, MDBCol, MDBContainer, MDBInput, MDBListGroup, MDBListGroupItem, MDBRow, MDBTextArea, MDBTypography } from 'mdb-react-ui-kit';
+import {useState, useEffect} from 'react'
 
-
-export function Checkout ({cart, navigate}) {
-
+export function Checkout ({cart, navigate, user}) {
+  const [orderInfo, setOrderInfo] = useState({})
+  const handleOrderEdit = ({target:{name, value}})=>setOrderInfo(orderInfo=>({...orderInfo, [name]: value}))
+  let price = cart.map((item)=>{return item.product.price*item.quantity}).reduce((partialSum, a)=>partialSum+a,0)
   let taxfee = 1.2
 
-  function submitOrder () {
-    let formData={}
+  function submitOrder (e) {
+    console.log('submit triggered')
+    e.preventDefault()
+    const formData = new FormData()
+    for (const key in orderInfo) { formData.append(key, orderInfo[key]) }
+    if (cart) formData.append('cart', JSON.stringify(cart))
+    if (price) formData.append('price', price)
+    if (user.id) formData.append('user_id', user.id)
+
     fetch(`/orders`, {
       method: "POST",
       body: formData
       }).then(r=>{if (r.ok) {
         navigate('/') 
+        console.log('successfully posted order')
       }})
   }
 
@@ -82,27 +92,27 @@ export function Checkout ({cart, navigate}) {
                 <form>
                   <MDBRow className="mb-4">
                     <MDBCol>
-                      <MDBInput label='First name' type='text' />
+                      <MDBInput onChange={handleOrderEdit} name='first_name' label='First name' type='text' />
                     </MDBCol>
                     <MDBCol>
-                      <MDBInput label='Last name' type='text' />
+                      <MDBInput onChange={handleOrderEdit} name='last_name' label='Last name' type='text' />
                     </MDBCol>
                   </MDBRow>
 
-                  <MDBInput label='Company name' type='text' className="mb-4" />
-                  <MDBInput label='Address' type='text' className="mb-4" />
-                  <MDBInput label='Email' type='text' className="mb-4" />
-                  <MDBInput label='Phone' type='text' className="mb-4" />
-                  <MDBTextArea label='Additional information' rows={4} className="mb-4" />
+                  {/* <MDBInput onChange={handleOrderEdit} label='Company name' type='text' className="mb-4" /> */}
+                  <MDBInput onChange={handleOrderEdit} label='Address' name='delivery_address' type='text' className="mb-4" />
+                  <MDBInput onChange={handleOrderEdit} label='Email' name='email' type='text' className="mb-4" />
+                  <MDBInput onChange={handleOrderEdit} label='Phone' name='phone' type='text' className="mb-4" />
+                  <MDBTextArea onChange={handleOrderEdit} name='comment' label='Additional information' rows={4} className="mb-4" />
 
-                  <div className="d-flex justify-content-center">
+                  {/* <div className="d-flex justify-content-center">
                     <MDBCheckbox name='flexCheck' value='' id='flexCheckChecked' label='Create an account?' defaultChecked />
-                  </div>
+                  </div> */}
                 </form>
               </MDBCardBody>
             </MDBCard>
             <div className="text-center">
-              <MDBBtn className="button-order col-md-10">Place order</MDBBtn>
+              <MDBBtn onClick={(e)=>submitOrder(e)} className="button-order col-md-10">Place order</MDBBtn>
             </div>
           </MDBCol>
         </MDBRow>

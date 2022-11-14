@@ -5,6 +5,8 @@ class OrdersController < ApplicationController
   def show
   end
   def create
+    order = Order.create!(order_params)
+    render json: order, status: :created
   end
   def update
   end
@@ -12,6 +14,7 @@ class OrdersController < ApplicationController
   end
   private
   def order_params
+    params.permit(:first_name, :last_name, :email, :phone, :cart, :price, :comment, :delivery_address, :user_id)
   end
 
 end
