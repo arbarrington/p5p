@@ -71,10 +71,10 @@ export function MyOperations ({user, setUser, navigate}) {
     </div>
     <div className='spacer mb-5'></div>
     
-    <div className='col'>
+    {selectedFarm && (<div className='col'>
       <h3>Products - {selectedFarm.name}</h3>
       <ProductList farm={selectedFarm} user={user} products={user.products} className='row'/>
-    </div>
+    </div>)}
     
 
     {((user.farms === []) || addingFarm) &&

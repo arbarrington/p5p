@@ -11,10 +11,29 @@ export function Home ({user}) {
   .then(r=>r.json()).then(data=>{ setOrdersOut(data) })
 
   useEffect(() => { fetchUserData(); fetchOrderData() }, [user.username])
-  
-  const myOrders = ordersOut.filter((order)=>{})
-  console.log(ordersOut[0].cart)
 
+  const myFarmIds = user.farms.map((farm)=>{
+    return farm.id
+  })
+  
+  const parsedCart = ordersOut.map((order)=>{
+    return JSON.parse(order.cart)
+    })
+
+  const myOrders = parsedCart.map((item)=> {
+    return item.filter((group)=>{return myFarmIds.includes(group.product.farm_id)})
+    // return myFarmIds.includes(order.product.id)
+  })
+
+    // .filter((order)=>{
+    //   return myFarmIds.includes(order.product.id)
+    //   })
+  
+
+  console.log('parsed Cart',parsedCart)
+  console.log('my farm ids', myFarmIds)
+  console.log('my orders out', myOrders)
+  
 
 
 
