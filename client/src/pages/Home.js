@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react'
 export function Home ({user}) {
   const [ordersIn,setOrdersIn] = useState([])
   const [ordersOut,setOrdersOut] = useState([])
+  // const [myOrdersOut,setMyOrdersOut] = useState([])
   
   const fetchUserData = ()=> fetch(`/users/${user.username}`)
   .then(r=>r.json()).then(data=>{ setOrdersIn(data.orders) })
@@ -25,6 +26,7 @@ export function Home ({user}) {
     // return myFarmIds.includes(order.product.id)
   })
 
+  // setMyOrdersOut(myOrders)
     // .filter((order)=>{
     //   return myFarmIds.includes(order.product.id)
     //   })
@@ -44,9 +46,11 @@ export function Home ({user}) {
       <h3>{user.bio}</h3>
       <h1 className="">My Orders and Subscriptions</h1>
       {user.producer?
-        ordersOut.map((order)=>{return <>
-        <h2>{order.first_name}</h2>
-        </>})
+        myOrders.map((order)=>{
+          return order.map((item)=>{
+            return <h2>{item.product.name}</h2>
+          })
+        })
         :
         ordersIn.map((order)=>{return <>
         <h2>${order.price}---{order.delivery_address}</h2>
