@@ -16,6 +16,10 @@ export function Home ({user}) {
   const myFarmIds = user.farms.map((farm)=>{
     return farm.id
   })
+
+  const myFarmNames = user.farms.map((farm)=>{
+    return farm.name
+  })
   
   const parsedCart = ordersOut.map((order)=>{
     return JSON.parse(order.cart)
@@ -23,18 +27,15 @@ export function Home ({user}) {
 
   const myOrders = parsedCart.map((item)=> {
     return item.filter((group)=>{return myFarmIds.includes(group.product.farm_id)})
-    // return myFarmIds.includes(order.product.id)
   })
 
-  // setMyOrdersOut(myOrders)
-    // .filter((order)=>{
-    //   return myFarmIds.includes(order.product.id)
-    //   })
-  
 
+  
+  console.log('my farm names', myFarmNames)
   console.log('parsed Cart',parsedCart)
   console.log('my farm ids', myFarmIds)
   console.log('my orders out', myOrders)
+
   
 
 
@@ -48,7 +49,9 @@ export function Home ({user}) {
       {user.producer?
         myOrders.map((order)=>{
           return order.map((item)=>{
-            return <h2>{item.product.name}</h2>
+            return <>
+            <h2>{item.quantity}x {item.product.name} from {myFarmNames[myFarmIds.indexOf(item.product.farm_id)]}</h2>
+            </>
           })
         })
         :
