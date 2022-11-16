@@ -57,7 +57,7 @@ export function ProductList ({farm, products, user, setCart, cart}) {
         )})}
       </Row>
       <div className="mt-5"></div>
-      {user.producer?
+      {farm?
       <Button onClick={()=>{setAddNew(true);handleShow()}}>Add Product for {farm.name}</Button>
       :null}
     </div>

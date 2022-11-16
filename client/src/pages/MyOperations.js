@@ -73,8 +73,7 @@ export function MyOperations ({user, setUser, navigate}) {
     <Button onClick={()=>{setAddingFarm(true);handleShow()}}>Add New Operation</Button>
     </div>
     <div className='spacer mb-5'></div>
-    
-    {(selectedFarm.products)? 
+    {(selectedFarm)? 
     (<div className='col'>
       <h3>Products - {selectedFarm.name}</h3>
       <ProductList farm={selectedFarm} user={user} products={user.products} className='row'/>
@@ -84,7 +83,7 @@ export function MyOperations ({user, setUser, navigate}) {
   }
     
 
-    {((user.farms) || addingFarm) &&
+    {(selectedFarm || addingFarm) &&
       <Modal show={show} onHide={handleClose}>
           
           <Modal.Header closeButton>
