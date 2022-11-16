@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react' 
 import {Row,Col} from 'react-bootstrap'
+import CustomerOrderCard from '../components/CustomerOrderCard'
 
 export function Home ({user}) {
   const [ordersIn,setOrdersIn] = useState([])
@@ -43,8 +44,8 @@ export function Home ({user}) {
 
   return (
     <div className="">
-      <h2 className="col">{user.display_name}</h2>
-      <img className="icon" src={user.icon} alt="User Icon"/>
+      {/* <h2 className="col">{user.display_name}</h2>
+      <img className="icon" src={user.icon} alt="User Icon"/> */}
       {/* <h3>{user.bio}</h3> */}
       <h1 className="">My Orders and Subscriptions</h1>
       {user.producer?
@@ -59,27 +60,25 @@ export function Home ({user}) {
             </tr>
           </thead>
           <tbody>
-
-        {myOrders.map((order)=>{
-          
-          return order.map((item)=>{
-            return (<>
-            <tr>
-            <td>{item.product.name}</td>
-            <td>{item.quantity} {item.product.unit}</td>
-            <td>{myFarmNames[myFarmIds.indexOf(item.product.farm_id)]}</td>
-            <td>1/23/2023</td> 
-            </tr>
-            </>)
-          })
-        
-        })}
+            {myOrders.map((order)=>{
+              return order.map((item)=>{
+                return (<>
+                <tr>
+                <td>{item.product.name}</td>
+                <td>{item.quantity} {item.product.unit}</td>
+                <td>{myFarmNames[myFarmIds.indexOf(item.product.farm_id)]}</td>
+                <td>1/23/2023</td> 
+                </tr>
+                </>)
+              })
+            })}
           </tbody>
-            </table>
+        </table>
         :
         ordersIn.map((order)=>{return <>
-        <h2>Your ${order.price} basket will be delivered to {order.delivery_address}</h2>
-        </>})}
+        <CustomerOrderCard order={order}/>
+        </>})
+      }
       {!user.producer?
         <h1>Favorite Producers</h1>
       :<h1>Consumer Analytics</h1>}
