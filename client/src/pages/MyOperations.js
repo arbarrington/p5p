@@ -24,7 +24,7 @@ export function MyOperations ({user, setUser, navigate}) {
   const handleFarmEdit = ({target:{name, value}})=>setFarmInfo(farmInfo=>({...farmInfo, [name]: value}))
   
   let errorNode = errorText.length===0 ? null : (<span className="centered" style={{color:"red", textAlign:"center"}}>{errorText}</span>)
-  console.log('my ops', user)
+
   function patchFarm (e) {
     // e.preventDefault()
     const formData = new FormData()
@@ -52,8 +52,8 @@ export function MyOperations ({user, setUser, navigate}) {
     }})
   }
 
-  console.log(user.farms)
-  // TODO : ADD OPERATION
+
+
   return (<>
   <div className='mt-5'>
     <h2>Select an Operation to View its Products</h2>

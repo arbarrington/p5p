@@ -1,5 +1,4 @@
 import {useEffect, useState} from 'react' 
-import {Row,Col} from 'react-bootstrap'
 import CustomerOrderCard from '../components/CustomerOrderCard'
 
 export function Home ({user}) {
@@ -53,6 +52,7 @@ export function Home ({user}) {
         <table class="table table-bordered">
           <thead>
             <tr>
+              <th scope="col">Complete?</th>
               <th scope="col">Product</th>
               <th scope="col">Amount</th>
               <th scope="col">Operation</th>
@@ -64,6 +64,7 @@ export function Home ({user}) {
               return order.map((item)=>{
                 return (<>
                 <tr>
+                <td><input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox"></input></td>
                 <td>{item.product.name}</td>
                 <td>{item.quantity} {item.product.unit}</td>
                 <td>{myFarmNames[myFarmIds.indexOf(item.product.farm_id)]}</td>
@@ -75,9 +76,11 @@ export function Home ({user}) {
           </tbody>
         </table>
         :
-        ordersIn.map((order)=>{return <>
+        <ul class="list-group">
+        {ordersIn.map((order)=>{return <>
         <CustomerOrderCard order={order}/>
-        </>})
+        </>})}
+        </ul>
       }
       {!user.producer?
         <h1>Favorite Producers</h1>
