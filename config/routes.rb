@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get 'users/:username', to: 'users#show'
 
   patch 'farms/:id', to: 'farms#update'
-  post 'farms/', to: "farms#create"
+  post 'farms', to: "farms#create"
 
   post '/orders', to: "orders#create"
 

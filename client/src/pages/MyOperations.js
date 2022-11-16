@@ -38,7 +38,9 @@ export function MyOperations ({user, setUser, navigate}) {
       }).then(r=>{if (r.ok) {
         console.log('successfully patched/posted farm', selectedFarm.id)
         handleClose()
-        setAddingFarm(false)} 
+        setAddingFarm(false) 
+        setSelectedFarm(user.farms[0])}
+
         else {r.json().then(({errors})=>{
           setErrorText(errors)
         })}
@@ -49,6 +51,7 @@ export function MyOperations ({user, setUser, navigate}) {
     fetch(`/farms/${selectedFarm.id}`, {method: "DELETE"}).then(r=>{if (r.ok) {
       console.log('successfully deleted farm')
       handleClose()
+      setSelectedFarm(user.farms[0])
     }})
   }
 
@@ -71,13 +74,17 @@ export function MyOperations ({user, setUser, navigate}) {
     </div>
     <div className='spacer mb-5'></div>
     
-    {selectedFarm && (<div className='col'>
+    {(selectedFarm.products)? 
+    (<div className='col'>
       <h3>Products - {selectedFarm.name}</h3>
       <ProductList farm={selectedFarm} user={user} products={user.products} className='row'/>
-    </div>)}
+    </div>)
+    :
+    <ProductList farm={selectedFarm} user={user} products={user.products} className='row'/>
+  }
     
 
-    {((user.farms === []) || addingFarm) &&
+    {((user.farms) || addingFarm) &&
       <Modal show={show} onHide={handleClose}>
           
           <Modal.Header closeButton>
@@ -107,4 +114,3 @@ export function MyOperations ({user, setUser, navigate}) {
   </>)
 }
 
-// TODO : make the farm editor use a bootstrap form

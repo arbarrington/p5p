@@ -44,15 +44,15 @@ export function ProductList ({farm, products, user, setCart, cart}) {
     }})
   }
 
+
+  console.log('i received this selected farm in prod list', farm)
   return (<>
     <div className="col">
       <Row md={3} xs={1} lg={5} className="g-3">
         {displayedProducts.map((product)=> {return(
           <Col key={product.id}>
             <ProductCard id={product.id} addNew={addNew} cart={cart} setCart={setCart} user={user} setSelectedProduct={setSelectedProduct} product={product} handleShow={handleShow}/>
-            {user.producer?
-            null
-            :null}
+
           </Col>
         )})}
       </Row>
@@ -62,7 +62,7 @@ export function ProductList ({farm, products, user, setCart, cart}) {
       :null}
     </div>
     
-    {user.producer?
+    {(selectedProduct || addNew)?
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>{addNew?`Add Product for ${farm.name}`:`Edit ${selectedProduct.name}`} </Modal.Title>
