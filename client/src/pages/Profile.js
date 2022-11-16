@@ -59,8 +59,8 @@ export function Profile ({user, navigate, logOut=()=>{}}) {
       <Button variant="primary" type="submit" onClick={(e)=>{patchProfile(e)}}>Submit Changes</Button>
     </Form>
 
-    <div onClick={()=>fetch('/logout', {method:"DELETE"}).then(r=>{if(r.ok){logOut()}})}>
-      <Button>Log Out @{user.username}</Button>
+    <div className="" onClick={()=>fetch('/logout', {method:"DELETE"}).then(r=>{if(r.ok){logOut()}})}>
+      <Button className="">Log Out @{user.username}</Button>
     </div>
   </>)
 }

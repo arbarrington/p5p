@@ -1,4 +1,5 @@
-import {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react' 
+import {Row,Col} from 'react-bootstrap'
 
 export function Home ({user}) {
   const [ordersIn,setOrdersIn] = useState([])
@@ -34,7 +35,7 @@ export function Home ({user}) {
   console.log('my farm names', myFarmNames)
   console.log('parsed Cart',parsedCart)
   console.log('my farm ids', myFarmIds)
-  console.log('my orders out', myOrders)
+  console.log('my orders', myOrders)
 
   
 
@@ -44,19 +45,40 @@ export function Home ({user}) {
     <div className="">
       <h2 className="col">{user.display_name}</h2>
       <img className="icon" src={user.icon} alt="User Icon"/>
-      <h3>{user.bio}</h3>
+      {/* <h3>{user.bio}</h3> */}
       <h1 className="">My Orders and Subscriptions</h1>
       {user.producer?
-        myOrders.map((order)=>{
+        
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Product</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Operation</th>
+              <th scope="col">Due Date</th>
+            </tr>
+          </thead>
+          <tbody>
+
+        {myOrders.map((order)=>{
+          
           return order.map((item)=>{
-            return <>
-            <h2>{item.quantity}x {item.product.name} from {myFarmNames[myFarmIds.indexOf(item.product.farm_id)]}</h2>
-            </>
+            return (<>
+            <tr>
+            <td>{item.product.name}</td>
+            <td>{item.quantity} {item.product.unit}</td>
+            <td>{myFarmNames[myFarmIds.indexOf(item.product.farm_id)]}</td>
+            <td>1/23/2023</td> 
+            </tr>
+            </>)
           })
-        })
+        
+        })}
+          </tbody>
+            </table>
         :
         ordersIn.map((order)=>{return <>
-        <h2>${order.price}---{order.delivery_address}</h2>
+        <h2>Your ${order.price} basket will be delivered to {order.delivery_address}</h2>
         </>})}
       {!user.producer?
         <h1>Favorite Producers</h1>
