@@ -18,7 +18,7 @@ export function Search ({user, setCart, cart}) {
   // TODO figure out location service that shows nearby farms
   // TODO search products and today's deals
   return (<>
-    <input type="text" id="chirpsearch" onChange={(e)=>setSearchTerm(e.target.value)} placeholder="Search products nearby..."></input>
+    {/* <input type="text" id="chirpsearch" onChange={(e)=>setSearchTerm(e.target.value)} placeholder="Search products nearby..."></input> */}
     
     <h1>Today's Deals</h1>
     <Col>
