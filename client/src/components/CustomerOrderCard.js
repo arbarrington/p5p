@@ -8,6 +8,16 @@ export default function CustomerOrderCard ({order}) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  function userMarkComplete () {
+  fetch(`/orders/${order.id}`, {
+    method: "DELETE"
+    }).then(r=>{if (r.ok) {
+
+      window.location.reload()
+      console.log('successfully posted order')
+    }})
+  }
+
   // TODO : Add a modal to show the product list
   return (<>
 
@@ -36,6 +46,7 @@ export default function CustomerOrderCard ({order}) {
       <h5>Total Price = ${JSON.parse(order.cart).map((item)=>{return item.product.price*item.quantity}).reduce((partialSum, a)=>partialSum+a,0)}</h5>
         <div className="spacer"></div>
       <Button variant="secondary" onClick={handleClose}>Close</Button>
+      <Button className="bg-success" onClick={()=>{userMarkComplete()}}>I Received My Order</Button>
       </Modal.Footer>
 
     </Modal>

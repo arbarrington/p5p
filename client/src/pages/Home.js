@@ -5,7 +5,8 @@ import SalesByMonth from '../components/SalesByMonth'
 export function Home ({user}) {
   const [ordersIn,setOrdersIn] = useState([])
   const [ordersOut,setOrdersOut] = useState([])
-  // const [myOrdersOut,setMyOrdersOut] = useState([])
+  const [partialOrderComplete, setPartialOrderComplete] = useState(false)
+  const [myOrdersOut,setMyOrdersOut] = useState([])
   
   const fetchUserData = ()=> fetch(`/users/${user.username}`)
   .then(r=>r.json()).then(data=>{ setOrdersIn(data.orders) })
@@ -37,6 +38,7 @@ export function Home ({user}) {
   console.log('parsed Cart',parsedCart)
   console.log('my farm ids', myFarmIds)
   console.log('my orders', myOrders)
+  console.log('my orders out', myOrdersOut)
 
   
 
@@ -65,7 +67,7 @@ export function Home ({user}) {
               return order.map((item)=>{
                 return (<>
                 <tr>
-                <td><input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox"></input></td>
+                <td><input onChange={()=>setMyOrdersOut((myOrdersOut)=> {return [...myOrdersOut, item]})} class="form-check-input me-1" type="checkbox" value="" item={item} id="firstCheckbox"></input></td>
                 <td>{item.product.name}</td>
                 <td>{item.quantity} {item.product.unit}</td>
                 <td>{myFarmNames[myFarmIds.indexOf(item.product.farm_id)]}</td>
@@ -87,7 +89,7 @@ export function Home ({user}) {
         <h1>Favorite Producers</h1>
       :<>
       <h1>Consumer Analytics</h1>
-      <SalesByMonth />
+      <SalesByMonth user={user} partialOrderComplete={partialOrderComplete} myOrders={myOrders} myOrdersOut={myOrdersOut}/>
       </>}
     </div>
   )

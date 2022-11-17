@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
     render json: order, status: :accepted
   end
   def destroy
+    Order.find_by(id: params[:id]).destroy
   end
   private
   def order_params

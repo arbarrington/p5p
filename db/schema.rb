@@ -70,7 +70,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_17_065636) do
     t.string "last_name"
     t.string "email"
     t.string "comment"
-    t.boolean "completed"
+    t.boolean "completed", null:false
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 

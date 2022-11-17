@@ -14,6 +14,7 @@ export function Checkout ({cart, navigate, user, setCart, cartOpen, setCartOpen}
     const formData = new FormData()
     for (const key in orderInfo) { formData.append(key, orderInfo[key]) }
     if (cart) formData.append('cart', JSON.stringify(cart))
+    if (price) formData.append('completed', false)
     if (price) formData.append('price', price)
     if (user.id) formData.append('user_id', user.id)
 
