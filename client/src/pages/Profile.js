@@ -19,7 +19,7 @@ export function Profile ({user, navigate, logOut=()=>{window.location.reload()}}
       method: "PATCH",
       body: formData
       }).then(r=>{if (r.ok) {
-        navigate('/') 
+        window.location.reload() 
       }})
   }
 
