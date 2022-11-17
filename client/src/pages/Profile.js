@@ -25,7 +25,7 @@ export function Profile ({user, navigate, logOut=()=>{window.location.reload()}}
 
   return (<>
     <h1>Update Your Personal Information, {user.display_name}</h1>
-    <Form>
+    <Form >
       <Form.Group className="mb-3" controlId="formDisplayName">
         <Form.Label>Name</Form.Label>
         <Form.Control type="text" placeholder="Enter your name" value={profileInfo.display_name} name="display_name" onChange={(e)=>handleProfileEdit(e)}/>
@@ -49,14 +49,14 @@ export function Profile ({user, navigate, logOut=()=>{window.location.reload()}}
         <input id="icon-input" type="file" accept="image/*" onChange={e=>setIcon(e.target.files[0])}/>
       </Form.Group>
 
-      <div>Did you mean to make a Producer account?
+      <div className="mb-3">Did you mean to make a Producer account?
         <select value={profileInfo.producer} name="producer" label="Did you mean to make a Producer account?" onChange={(e)=>handleProfileEdit(e)}>
           <option value={false} label="No, I am here to purchase produce"></option>
           <option value={true} label="Yes, I am here to sell my produce"></option>
         </select>
       </div>
 
-      <Button variant="primary" type="submit" onClick={(e)=>{patchProfile(e)}}>Submit Changes</Button>
+      <Button className="mb-5" variant="primary" type="submit" onClick={(e)=>{patchProfile(e)}}>Submit Changes</Button>
     </Form>
 
     <div className="" onClick={()=>fetch('/logout', {method:"DELETE"}).then(r=>{if(r.ok){logOut()}})}>

@@ -24,7 +24,7 @@ export function Setup ({user, fetchUserData, navigate}) {
       body: formData
       }).then(r=>{if (r.ok) {
         navigate('/')
-        
+        window.location.reload()
       }})
   }
 
