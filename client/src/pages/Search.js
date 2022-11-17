@@ -28,9 +28,9 @@ export function Search ({user, setCart, cart}) {
     </Col>
 
     <h1>Select a Nearby Farm to View its Products</h1>
-    <Row>
+    <Row md={3} xs={1} lg={5}>
     {farms.map((farm)=>
-      <Col>
+      <Col className='mb-3'>
       <FarmCard className='row' 
                 selectedFarm={selectedFarm} 
                 setSelectedFarm={setSelectedFarm} 

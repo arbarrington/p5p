@@ -27,8 +27,8 @@ export function FarmCard ({id, navigate, reload, farm, setSelectedFarm, user, se
 
   return (<>
     <Card className="h-100 d-flex flex-column" key={id} onClick={()=>{handleFarmSelection()}}>
+      <Card.Img className="h-100" src={farm.banner} alt="No banner is available yet" style={{ objectFit: "cover" }}/>
       <Card.Title className="justify-content-between align-items-baseline mb-2">{farm.name}</Card.Title>
-      <Card.Img className="" src={farm.banner} alt="No banner is available yet" style={{ objectFit: "cover" }}/>
       {/* <span>{farm.location}</span> */}
       {/* <span>{farm.message}</span> */} 
     </Card>
