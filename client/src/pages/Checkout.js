@@ -2,7 +2,7 @@ import {Col, Row} from 'react-bootstrap'
 import { MDBAccordion, MDBAccordionItem, MDBBtn, MDBCard, MDBCardBody, MDBCardFooter, MDBCardHeader, MDBCardImage, MDBCheckbox, MDBCol, MDBContainer, MDBInput, MDBListGroup, MDBListGroupItem, MDBRow, MDBTextArea, MDBTypography } from 'mdb-react-ui-kit';
 import {useState, useEffect} from 'react'
 
-export function Checkout ({cart, navigate, user}) {
+export function Checkout ({cart, navigate, user, setCart}) {
   const [orderInfo, setOrderInfo] = useState({})
   const handleOrderEdit = ({target:{name, value}})=>setOrderInfo(orderInfo=>({...orderInfo, [name]: value}))
   let price = cart.map((item)=>{return item.product.price*item.quantity}).reduce((partialSum, a)=>partialSum+a,0)
@@ -21,6 +21,7 @@ export function Checkout ({cart, navigate, user}) {
       method: "POST",
       body: formData
       }).then(r=>{if (r.ok) {
+        setCart([])
         navigate('/') 
         console.log('successfully posted order')
       }})

@@ -24,7 +24,7 @@ export function Profile ({user, navigate, logOut=()=>{window.location.reload()}}
   }
 
   return (<>
-    <h1>Update Your Personal Information, {user.display_name}</h1>
+    <h1>Update Your Information, {user.display_name}</h1>
     <Form >
       <Form.Group className="mb-3" controlId="formDisplayName">
         <Form.Label>Name</Form.Label>

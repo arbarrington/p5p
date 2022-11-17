@@ -61,7 +61,7 @@ function App() {
     <div className="App"><Routes>
       <Route path='/' element={<Home user={user} setUser={setUser} navigate={navigate}/>}/>
       <Route path='/setup' element={<Setup user={user} navigate={navigate}/>}/>
-      <Route path="/checkout" element={<Checkout navigate={navigate} user={user} setUser={setUser} cart={cart} />}/>
+      <Route path="/checkout" element={<Checkout navigate={navigate} user={user} setUser={setUser} cart={cart} setCart={setCart}/>}/>
       <Route path=":username" element={<Profile user={user} setUser={setUser} navigate={navigate}/>}/>
       <Route path='/search'  element={<Search user={user} setUser={setUser} navigate={navigate} setCart={setCart} cart={cart}/>}/>
       {/* <Route path="/cart" element={<Cart user={user} setUser={setUser} navigate={navigate} setCart={setCart} cart={cart} />}/> */}
