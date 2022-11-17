@@ -2,7 +2,7 @@ import { LabeledInput } from "../components/LabeledInput"
 import { useEffect, useState } from "react"
 import {Button, Form} from "react-bootstrap"
 
-export function Profile ({user, navigate, logOut=()=>{}}) {
+export function Profile ({user, navigate, logOut=()=>{window.location.reload()}}) {
   const [profileInfo, setProfileInfo] = useState({user})
   const [icon, setIcon] = useState(null)
 
@@ -60,7 +60,7 @@ export function Profile ({user, navigate, logOut=()=>{}}) {
     </Form>
 
     <div className="" onClick={()=>fetch('/logout', {method:"DELETE"}).then(r=>{if(r.ok){logOut()}})}>
-      <Button className="">Log Out @{user.username}</Button>
+      <Button className="bg-danger">Log Out @{user.username}</Button>
     </div>
   </>)
 }

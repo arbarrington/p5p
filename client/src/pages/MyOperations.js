@@ -36,11 +36,11 @@ export function MyOperations ({user, setUser, navigate}) {
       method: addingFarm?"POST":"PATCH",
       body: formData
       }).then(r=>{if (r.ok) {
-        console.log('successfully patched/posted farm', selectedFarm.id)
+        // console.log('successfully patched/posted farm', selectedFarm.id)
         handleClose()
         setAddingFarm(false) 
-        setSelectedFarm(user.farms[0])}
-
+        setSelectedFarm(user.farms[0])
+        window.location.reload()}
         else {r.json().then(({errors})=>{
           setErrorText(errors)
         })}
@@ -52,6 +52,7 @@ export function MyOperations ({user, setUser, navigate}) {
       console.log('successfully deleted farm')
       handleClose()
       setSelectedFarm(user.farms[0])
+      window.location.reload()
     }})
   }
 

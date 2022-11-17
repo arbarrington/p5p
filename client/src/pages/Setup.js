@@ -41,7 +41,8 @@ export function Setup ({user, fetchUserData, navigate}) {
       method: "POST",
       body: formData2
       }).then(r=>{if (r.ok) {
-        navigate('/')
+        navigate('/operations')
+        window.location.reload()
         console.log('succesful farm post',farmInfo)
       }})
   }

@@ -25,6 +25,7 @@ export function ProductList ({farm, products, user, setCart, cart}) {
     for (const key in productInfo) { formData.append(key, productInfo[key]) }
     if (attachment) formData.append('attachment', attachment, attachment.name)
     if (addNew) formData.append('farm_id', farm.id)
+    
     console.log('patch or post product triggered')
     
     fetch(addNew?'/products':`/products/${selectedProduct.id}`, {
@@ -34,13 +35,16 @@ export function ProductList ({farm, products, user, setCart, cart}) {
         console.log(addNew?'prod post':'prod patch', formData)
         setAddNew(false)
         handleClose()
+        window.location.reload()
       }})
   }
 
   function deleteProduct(e) {
     fetch(`/products/${selectedProduct.id}`, {method: "DELETE"}, {head: "No-Content"}).then(r=>{if (r.ok) {
       console.log('successfully deleted product')
+
       handleClose()
+      window.location.reload()
     }})
   }
 
