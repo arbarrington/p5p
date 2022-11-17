@@ -27,7 +27,7 @@ export function Profile ({user, navigate, logOut=()=>{window.location.reload()}}
     <h1>Update Your Information, {user.display_name}</h1>
     <Form >
       <Form.Group className="mb-3" controlId="formDisplayName">
-        <Form.Label>Name</Form.Label>
+        <Form.Label>What should others call you?</Form.Label>
         <Form.Control type="text" placeholder="Enter your name" value={profileInfo.display_name} name="display_name" onChange={(e)=>handleProfileEdit(e)}/>
         <Form.Text className="text-muted">
           This is the name that will be displayed when other users view your profile.
@@ -35,7 +35,7 @@ export function Profile ({user, navigate, logOut=()=>{window.location.reload()}}
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBio">
-        <Form.Label>Biography</Form.Label>
+        <Form.Label>What do you want people to know about you?</Form.Label>
         <Form.Control type="text" placeholder="Share some information with other users" value={profileInfo.bio} name="bio" onChange={(e)=>handleProfileEdit(e)}/>
         <Form.Text className="text-muted">
           Ex: "Owner of Boone Hall Farms", "Mother of four hungry, healthy kids!"
@@ -43,10 +43,10 @@ export function Profile ({user, navigate, logOut=()=>{window.location.reload()}}
       </Form.Group>
 
 
-      <Form.Group>
+      <Form.Group >
         <Form.Label htmlFor="icon-input">Upload a new image for your profile:</Form.Label>
         {/* <div className="spacer"/> */}
-        <input id="icon-input" type="file" accept="image/*" onChange={e=>setIcon(e.target.files[0])}/>
+        <input className="mb-3" id="icon-input" type="file" accept="image/*" onChange={e=>setIcon(e.target.files[0])}/>
       </Form.Group>
 
       <div className="mb-3">Did you mean to make a Producer account?

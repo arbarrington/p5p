@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react' 
 import CustomerOrderCard from '../components/CustomerOrderCard'
+import SalesByMonth from '../components/SalesByMonth'
 
 export function Home ({user}) {
   const [ordersIn,setOrdersIn] = useState([])
@@ -84,7 +85,10 @@ export function Home ({user}) {
       }
       {!user.producer?
         <h1>Favorite Producers</h1>
-      :<h1>Consumer Analytics</h1>}
+      :<>
+      <h1>Consumer Analytics</h1>
+      <SalesByMonth />
+      </>}
     </div>
   )
 }
