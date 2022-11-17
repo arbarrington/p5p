@@ -2,7 +2,7 @@ import {Col, Row} from 'react-bootstrap'
 import { MDBAccordion, MDBAccordionItem, MDBBtn, MDBCard, MDBCardBody, MDBCardFooter, MDBCardHeader, MDBCardImage, MDBCheckbox, MDBCol, MDBContainer, MDBInput, MDBListGroup, MDBListGroupItem, MDBRow, MDBTextArea, MDBTypography } from 'mdb-react-ui-kit';
 import {useState, useEffect} from 'react'
 
-export function Checkout ({cart, navigate, user, setCart}) {
+export function Checkout ({cart, navigate, user, setCart, cartOpen, setCartOpen}) {
   const [orderInfo, setOrderInfo] = useState({})
   const handleOrderEdit = ({target:{name, value}})=>setOrderInfo(orderInfo=>({...orderInfo, [name]: value}))
   let price = cart.map((item)=>{return item.product.price*item.quantity}).reduce((partialSum, a)=>partialSum+a,0)
@@ -77,7 +77,7 @@ export function Checkout ({cart, navigate, user, setCart}) {
             <MDBCard className="mb-4">
               <MDBCardHeader className="py-3">
                 <MDBTypography tag="h5" className="mb-0 text-font">
-                  1 item <span className="float-end mt-1" style={{ fontSize: '13px' }}>Edit</span>
+                  {cart.length} item(s) <span onClick={()=>setCartOpen(true)} className="float-end mt-1" style={{ fontSize: '13px' }}>Edit</span>
                 </MDBTypography>
               </MDBCardHeader>
               {cart.map((item)=>{return(

@@ -1,9 +1,11 @@
 import {Button} from "react-bootstrap"
 import {useState} from 'react'
 
+// TODO : fix cart to match add quantity button
+
 export function AddCartButton ({product, cart, setCart}) {
   const [cartQuantity,setCartQuantity] = useState(0)
-  console.log('addbtn',cartQuantity)
+  console.log('addbtn',cart.find((item)=>{if (item.product.id == product.id) return item.quantity }))
 
   function increaseCartQuantity(product){
     setCartQuantity((cartQuantity)=> cartQuantity+1)

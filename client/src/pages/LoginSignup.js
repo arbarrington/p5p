@@ -1,5 +1,7 @@
 import { Fragment, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import { MDBAccordion, MDBAccordionItem, MDBBtn, MDBCard, MDBCardBody, MDBCardFooter, MDBCardHeader, MDBCardImage, MDBCheckbox, MDBCol, MDBContainer, MDBInput, MDBListGroup, MDBListGroupItem, MDBRow, MDBTextArea, MDBTypography } from 'mdb-react-ui-kit';
+import {Button} from 'react-bootstrap'
 
 export function LoginSignup({ user, setUser, isLogin }) {
   const navigate = useNavigate()
@@ -43,20 +45,25 @@ export function LoginSignup({ user, setUser, isLogin }) {
   let errorNode = errorText.length===0 ? null : (<span className="centered" style={{color:"red", textAlign:"center"}}>{errorText}</span>)
   
  
-  return (
+  return (<MDBContainer className="py-2" style={{maxWidth: '800px'}}>
+    <MDBCard>
     <div className="col">
-      <form onSubmit={handleSubmit} className="login centered col" id="log-form">
+        <MDBCardHeader>
         <h1>{isLogin? "Log In": "Sign Up"}</h1>
-        <input onChange={(e)=>{setUsername(e.target.value)}} value={username} placeholder="username" type="text"/>
-        <input onChange={(e)=>{setPassword(e.target.value)}} value={password} placeholder="password" type="password"/>
+        </MDBCardHeader>
+        <MDBCardBody>
+        <form onSubmit={handleSubmit} className="login centered col" id="log-form">
+
+        <MDBInput  onChange={(e)=>{setUsername(e.target.value)}} value={username} label="username" type="text"/>
+        
+        <MDBInput className="mt-3" onChange={(e)=>{setPassword(e.target.value)}} value={password} label="password" type="password"/>
 
         {!isLogin && <div className="images col">
           <div className="row">
-            <label htmlFor="icon-input">Icon:</label>
             <div className="spacer"/>
-            <input id="icon-input" type="file" accept="image/*" onChange={e=>setIcon(e.target.files[0])}/>
+            <MDBInput id="icon-MDBInput" type="file" className="mt-3" accept="image/*" label="profile photo" onChange={e=>setIcon(e.target.files[0])}/>
           </div>
-          <div className="row">
+          <div className="row mt-3">
               <label htmlFor="usertype-input">Are you a producer or consumer?</label>
               <select id="usertype" onChange={(e)=>setProducer(e.target.value)}>
                 <option>Choose one...</option>
@@ -65,13 +72,15 @@ export function LoginSignup({ user, setUser, isLogin }) {
               </select>
           </div>
         </div>}
-        <div className="row centerChildren">
-          <button className="centered" type="submit">Submit</button>
+        <div className="col centerChildren">
+          <Button className="centered mt-3" type="submit">Submit</Button>
           <div className="spacer"/>
-          <span className="centered">{isLogin? "New?":"Not New?"} <Link className="link" style={{textDecoration:"underline"}} to={isLogin? "/signup":"/login"}>{isLogin? "Sign Up":"Log In"}</Link></span>
+          <span className="centered mt-3">{isLogin? "New?":"Not New?"} <Link className="link" style={{textDecoration:"underline"}} to={isLogin? "/signup":"/login"}>{isLogin? "Sign Up":"Log In"}</Link></span>
         </div>
       </form>
       {errorNode}
+      </MDBCardBody>
     </div>
-  )
+    </MDBCard>
+  </MDBContainer>)
 }
