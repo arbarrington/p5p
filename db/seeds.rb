@@ -5,7 +5,6 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-puts "Seeding Users"
 users = [
   {
     username: "farmerbob",
@@ -30,7 +29,6 @@ users = [
   }
 ]
 
-puts "Seeding Farms"
 farms = [
   {
     name: "Barrington Farms",
@@ -41,7 +39,7 @@ farms = [
     user_id: 2
   },
   {
-    name: "Merrihew Mews",
+    name: "Cherry Oak Mews",
     location: "201 Main St., Denver, CO, 80202",
     message: "Howdy neighbor! We hope you enjoy the fresh, natural, locally-grown and -raised produce that we have to offer. Come see us anytime!",
     website: "google.com",
@@ -49,7 +47,7 @@ farms = [
     user_id: 1
   },
   {
-    name: "Ball Foods",
+    name: "Best Foods Co.",
     location: "202 Main St., Denver, CO, 80202",
     message: "We are a small regenerative operation here to offer you a delicious variety of vegetables, meats, spices, and condiments - enjoy!",
     website: "google.com",
@@ -57,7 +55,7 @@ farms = [
     user_id: 1
   },
   {
-    name: "Darby Fields",
+    name: "Fresh Fields",
     location: "203 Main St., Denver, CO, 80202",
     message: "We are known for our beef, honey and tomatoes... don't let that stop you from trying our other, lesser-known products!",
     website: "google.com",
@@ -65,7 +63,7 @@ farms = [
     user_id: 2
   },
   {
-    name: "Harris Agricultural Supply Co.",
+    name: "Ag Supply Co.",
     location: "204 Main St., Denver, CO, 80202",
     message: "Enjoy any of our produce here on FM, or come on down and eat a farm-fresh meal at our restaurant! (No, we are not a petting zoo.)",
     website: "google.com",
@@ -85,13 +83,13 @@ products = [
     stocked: true
   },
   {
-    farm_id: 1,
+    farm_id: 4,
     name: "Carrots",
     price: 3,
     unit: "lb.",
     description: "Regeneratively sourced Nantes",
     
-    stocked: false
+    stocked: true
   },
   {
     farm_id: 1,
@@ -154,7 +152,7 @@ products = [
     unit: "oz.",
     description: "Kansas bees",
     
-    stocked: false
+    stocked: true
   },
   {
     farm_id: 2,
@@ -190,7 +188,7 @@ products = [
     unit: "lb.",
     description: "Sirloin",
     
-    stocked: false
+    stocked: true
   },
   {
     farm_id: 5,
@@ -217,28 +215,21 @@ products = [
     unit: "gallon",
     description: "Grass-fed cows",
     
-    stocked: false
+    stocked: true
   },
 ]
 
-orders = [
-  user_id: 3,
-  delivery_address: "2905 Inca St., Denver, CO, 80202",
-  cart: "",
-  price: 54
-]
-
+puts "Seeding Users"
 User.destroy_all
 User.create!(users)
 
+puts "Seeding Farms"
 Farm.destroy_all
 Farm.create!(farms)
 
+puts "Seeding Products"
 Product.destroy_all
 Product.create!(products)
-
-# Order.create!(orders)
-
 
 puts "Done!"
 

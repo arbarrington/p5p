@@ -20,12 +20,7 @@ export function Search ({user, setCart, cart}) {
   return (<>
     {/* <input type="text" id="chirpsearch" onChange={(e)=>setSearchTerm(e.target.value)} placeholder="Search products nearby..."></input> */}
     
-    <h1>Today's Deals</h1>
-    <Col>
-      <Col style={{textDecoration:"underline"}}>Spaghetti Dinner for 6</Col>
-      <Col style={{textDecoration:"underline"}}>20% off Beef when buying 6lbs+</Col>
-      <Col style={{textDecoration:"underline"}}>End of season sale - carrots</Col>
-    </Col>
+
 
     <h1>Select a Nearby Farm to View its Products</h1>
     <Row md={3} xs={1} lg={5}>
@@ -50,6 +45,11 @@ export function Search ({user, setCart, cart}) {
                    user={user} 
                    className='row'/> 
     </div>
-
+    <h1>Today's Deals</h1>
+    <Col>
+      <Col style={{textDecoration:"underline"}}>Spaghetti Dinner for 6</Col>
+      <Col style={{textDecoration:"underline"}}>20% off Beef when buying 6lbs+</Col>
+      <Col style={{textDecoration:"underline"}}>End of season sale - carrots</Col>
+    </Col>
   </>)
 }

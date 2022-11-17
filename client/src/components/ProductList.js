@@ -51,7 +51,7 @@ export function ProductList ({farm, products, user, setCart, cart}) {
 
   console.log('i received this selected farm in prod list', farm)
   return (<>
-    <div className="col">
+    <div className="">
       <Row md={3} xs={1} lg={5} className="g-3">
         {displayedProducts.map((product)=> {return(
           <Col key={product.id}>
@@ -60,7 +60,7 @@ export function ProductList ({farm, products, user, setCart, cart}) {
           </Col>
         )})}
       </Row>
-      <div className="mt-5"></div>
+      <div className="mt-3"></div>
       {(farm && user.producer) ?
       <Button onClick={()=>{setAddNew(true);handleShow()}}>Add Product for {farm.name}</Button>
       :null}

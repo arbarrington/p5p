@@ -64,7 +64,7 @@ export function MyOperations ({user, setUser, navigate}) {
     <Row>
       {user.farms.map((farm)=>{
         return(
-          <Col>
+          <Col className='mb-3'>
             <FarmCard setSelectedFarm={setSelectedFarm} reload={fetchUserData} navigate={navigate} id={farm.id} farm={farm} user={user}/>  
             <Button onClick={()=>{handleShow();setSelectedFarm(farm)}}>Edit/Remove Operation</Button>
           </Col>

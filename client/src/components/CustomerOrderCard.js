@@ -33,9 +33,9 @@ export default function CustomerOrderCard ({order}) {
       </Modal.Body>
       
       <Modal.Footer>
-      <h4>Total Price = ${JSON.parse(order.cart).map((item)=>{return item.product.price*item.quantity}).reduce((partialSum, a)=>partialSum+a,0)}</h4>
-
-            <Button variant="secondary" onClick={handleClose}>Close</Button>
+      <h5>Total Price = ${JSON.parse(order.cart).map((item)=>{return item.product.price*item.quantity}).reduce((partialSum, a)=>partialSum+a,0)}</h5>
+        <div className="spacer"></div>
+      <Button variant="secondary" onClick={handleClose}>Close</Button>
       </Modal.Footer>
 
     </Modal>
